@@ -1,21 +1,34 @@
-import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native'
-import React from 'react'
+import { StyleSheet, Text, View } from 'react-native'
+import React, { memo } from 'react'
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import FontAwesome6 from '@expo/vector-icons/FontAwesome6';
 import AntDesign from '@expo/vector-icons/AntDesign';
-import Entypo from '@expo/vector-icons/Entypo';
+import ImageFlatListComp from '../AppComp/ImageFlatListComp';
+import FavoriteIcon from './FavoriteIcon';
 
 
-const ProductContainer = () => {
+interface productId {
+     id: number
+}
+
+
+const ProductContainer = ({ id }: productId) => {
+
      return (
-          <TouchableOpacity style={styles.container}>
+
+          <View style={styles.container}>
 
                <View style={styles.imageContainer}>
-                    <Image style={styles.image} source={require("../../assets/icons/tein_tekne 1.png")} />
-                    <TouchableOpacity>
+                    <ImageFlatListComp
+                         image1Adress={require("../../assets/icons/tein_tekne_3.jpeg")}
+                         image2Adress={require("../../assets/icons/tein_tekne_2.jpeg")}
+                         image3Adress={require("../../assets/icons/tein_tekne_3.jpeg")}
+                         image4Adress={require("../../assets/icons/tein_tekne_2.jpeg")}
+                         image5Adress={require("../../assets/icons/tein_tekne_2.jpeg")}
+                    />
 
-                    </TouchableOpacity>
-                    <Entypo style={styles.heartIcon} name="heart-outlined" size={24} color="#DD0808" />
+                    <FavoriteIcon id={id} />
+
                </View>
 
                <View style={styles.textContainer}>
@@ -51,11 +64,11 @@ const ProductContainer = () => {
                     </View>
                </View>
 
-          </TouchableOpacity>
+          </View>
      )
 }
 
-export default ProductContainer
+export default memo(ProductContainer);
 
 const styles = StyleSheet.create({
      container: {
@@ -75,6 +88,10 @@ const styles = StyleSheet.create({
           zIndex: 10,
           top: 15,
           right: 15,
+          width: 40,
+          height: 40,
+          alignItems: 'center',
+          justifyContent: 'center',
      },
      image: {
           width: 342,

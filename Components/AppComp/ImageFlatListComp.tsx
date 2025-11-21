@@ -2,26 +2,46 @@ import React from 'react';
 import { StyleSheet, Image, View } from 'react-native';
 import Swiper from 'react-native-swiper';
 
-const ImageFlatListComp = () => {
+interface ImageProps {
+  image1Adress: any,
+  image2Adress?: any
+  image3Adress?: any
+  image4Adress?: any
+  image5Adress?: any
+}
+
+const ImageFlatListComp = ({ image1Adress, image2Adress, image3Adress, image4Adress, image5Adress }: ImageProps) => {
   return (
-    <View style={{ height: 250 }}>
+
+    <View style={{ width: 342, height: 243 }}>
       <Swiper
         dotColor="gray"
         activeDotColor="blue"
+        removeClippedSubviews={false}
       >
         {/* 1. Resim */}
         <View style={styles.slide}>
-          <Image style={styles.image} source={require("../../assets/icons/tein_tekne 1.png")} />
+          <Image style={styles.image} source={image1Adress} />
         </View>
 
         {/* 2. Resim */}
         <View style={styles.slide}>
-          <Image style={styles.image} source={require("../../assets/icons/tein_tekne 1.png")} />
+          <Image style={styles.image} source={image2Adress} />
         </View>
 
         {/* 3. Resim */}
         <View style={styles.slide}>
-          <Image style={styles.image} source={require("../../assets/icons/tein_tekne 1.png")} />
+          <Image style={styles.image} source={image3Adress} />
+        </View>
+
+        {/* 4. Resim */}
+        <View style={styles.slide}>
+          <Image style={styles.image} source={image4Adress} />
+        </View>
+
+        {/* 5. Resim */}
+        <View style={styles.slide}>
+          <Image style={styles.image} source={image5Adress} />
         </View>
       </Swiper>
     </View>

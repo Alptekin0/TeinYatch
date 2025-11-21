@@ -7,7 +7,7 @@ import { Text, View } from 'react-native';
 export default function App() {
   return (
 
-    //<View><Text>asdsadasda</Text></View>
+    // <View style={{ alignItems: "center", justifyContent: "center", height: "100%" }}><Text style={{ fontSize: 20 }}>SelamAleyküm</Text></View>
 
     <Provider store={store}>
       <RootNavigation />

@@ -1,7 +1,16 @@
-import { StyleSheet, Text, View, Image } from 'react-native'
+import { StyleSheet, Text, View, Image, FlatList } from 'react-native'
 import React from 'react'
 import { LocationSelector, CustomTabBar, ProductContainer } from '../../Components/MainPageComp'
 import ImageFlatListComp from '../../Components/AppComp/ImageFlatListComp';
+
+const products = [
+  { id: 1 },
+  { id: 2 },
+  { id: 3 },
+  { id: 4 },
+  { id: 5 },
+];
+
 
 const AnaSayfa = () => {
   return (
@@ -10,9 +19,15 @@ const AnaSayfa = () => {
       <CustomTabBar />
 
       <LocationSelector />
+      <View style = {{marginTop : 5}}></View>
 
-      <ImageFlatListComp />
-      <ProductContainer />
+      <FlatList
+        data={products}
+        keyExtractor={(item) => item.id.toString()}
+        renderItem={({ item }) => (<ProductContainer id={item.id} />)}
+        showsVerticalScrollIndicator={false}
+      />
+
 
 
 

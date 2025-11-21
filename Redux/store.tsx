@@ -4,6 +4,7 @@ import RegisterTypeReducer from "../Slices/RegisterTypeSlice"
 import EyeReducer from "../Slices/EyeSlice"
 import LoginReducer from "../Slices/LoginSlice"
 import AuthReducer from "../Slices/IsAuthSlice"
+import  IsFavoritedReducer from "../Slices/IsFavoritedSlice"
 
 export const store = configureStore({
      reducer: {
@@ -12,6 +13,7 @@ export const store = configureStore({
           Eye: EyeReducer,
           Login: LoginReducer,
           Auth: AuthReducer, 
+          isFavorite : IsFavoritedReducer,
      }
 })
 
