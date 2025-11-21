@@ -1,0 +1,47 @@
+Aşamalar : 
+
+  - Temel Navigasyon yapısı yapıldı.
+  - Giriş yap ve Kaydol için gerekli fontlar eklendi
+  - Temel Redux Toolkit yapısı kuruldu.
+  - Gerekli ve kullanılması düşünülen kütüphaneler eklendi.
+  - Loading Ekranı yapıldı. 
+  - Giriş Yap Ekranı yapıldı.
+  - Kaydol Ekranı yapıldı.
+  - Test Mail'i ve Şifresi oluşturuldu.
+  - Giriş Yap ve Kaydol Ekranları tamamlandı.
+
+
+Yapılacaklar : 
+
+  - Giriş yap sayfasındaki title'ın font family'si farklı onu düzenle. ✅️
+  - İnput için componentleri formik ve yup entagrasyonlu yap. ✅️
+  - Müşteri ve Acente Kayıt iki ayrı form olarak yapılacak.(formik ve yup) ✅️
+  - Font Klasik font yapıldı tüm ekranlarda fontlar düzeltilecek.
+  - Kayıt Ol sayfasında Kişisel Verilerin işlemesi kısmında bir modal oluşturup yazı çıkıcak.
+  - Şifre yenileme Ekranı yapılacak.
+  - Giriş Yap ve Kaydol ekranlarının sadece fonksiyonel bazı özellikleri eksik.
+
+
+Eklenen Fontlar:
+    - Nunito
+    - Montserrat
+
+
+Eklenen Kütüphaneler:
+ - Redux Toolkit
+ - expo font
+ - Navigate
+ - Formik & Yup
+ - OTP entry kütüphanesi
+
+
+ Sorunlar : 
+
+ - Giriş Yap ve Kaydol sayfalarının Şifre kısmındaki göz iconu redux state yapısında tutuluyor. Bundan dolayı bir ekranda değişiklik yapılsa
+   diğerinde de göz iconu o halde oluyor. Bu kısım böyle kalsın Çünkü redux mantığını anlamak için muhteşem bir yapı.
+
+  -Fontlar
+
+  - Giriş yap ve kayıt ol sayfasında input'a tıklayınca ekranın yukarı çıkması lazım. inputlar ve buton klavye altında kalıyor
+
+  - Kullanıcı giriş yaptıktan sonra bir hata veriyor.
