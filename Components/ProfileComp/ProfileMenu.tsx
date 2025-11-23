@@ -1,17 +1,21 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, TouchableOpacity } from 'react-native'
 import React from 'react'
+import { useNavigation } from '@react-navigation/native'
 
 interface ProfileMenuProps {
      text: string,
      icon: React.ReactNode
+     route : string
+
 }
 
-const ProfileMenu = ({ text, icon }: ProfileMenuProps) => {
+const ProfileMenu = ({ text, icon, route }: ProfileMenuProps) => {
+     const navigation = useNavigation<any>();
      return (
-          <View style={styles.container}>
+          <TouchableOpacity style={styles.container} onPress={ () => navigation.navigate(route)}>
                <Text style={styles.text}>{text}</Text>
                {icon}
-          </View>
+          </TouchableOpacity>
      )
 }
 

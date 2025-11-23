@@ -3,8 +3,10 @@ import React, { useEffect } from 'react'
 import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { AnaSayfa, Rezervasyonlarım, Favorilerim, Profilim } from '../Screens/PagesScreen';
+import { AnaSayfa, Rezervasyonlarım, Favorilerim, ProfileNavigator } from '../Screens/PagesScreen';
+
 import { Ionicons } from '@expo/vector-icons';
+import { getFocusedRouteNameFromRoute } from '@react-navigation/native';
 
 
 
@@ -23,7 +25,7 @@ const PagesNavigation = () => {
                          let iconName: keyof typeof Ionicons.glyphMap = 'home';
 
                          if (route.name === 'AnaSayfa') {
-                              iconName =  'home-outline';
+                              iconName = 'home-outline';
                          } else if (route.name === 'Rezervasyonlarım') {
                               iconName = 'help-buoy-outline';
                          } else if (route.name === 'Favorilerim') {
@@ -43,7 +45,16 @@ const PagesNavigation = () => {
                <Tab.Screen name="AnaSayfa" component={AnaSayfa} />
                <Tab.Screen name="Rezervasyonlarım" component={Rezervasyonlarım} />
                <Tab.Screen name="Favorilerim" component={Favorilerim} />
-               <Tab.Screen name="Profilim" component={Profilim} />
+               <Tab.Screen name="Profilim" component={ProfileNavigator}
+                    options={({ route }) => ({
+                         tabBarStyle: ((route) => {  // Tab barı sadece profil sayfasında göster sonrasında gizle
+                              const routeName = getFocusedRouteNameFromRoute(route) ?? 'Profil';
+                              if (routeName === 'Profil') {
+                                   return { display: 'flex' };
+                              }
+                              return { display: 'none' };
+                         })(route),
+                    })}/>
           </Tab.Navigator>
 
      )

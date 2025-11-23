@@ -74,7 +74,11 @@ const SifreniziBelirleyin = ({ navigation }: any) => {
           onPress={() => setVisible(true)}
         />
 
-        <ModalComponent visible={visible} onClose={() => { setVisible(false); navigation.navigate("girisYap"); }} />
+        <ModalComponent title=' Şifreniz Yenilendi '
+          text='Yeni şifrenizle giriş yapabilirsiniz'
+          ButtonTitle='Giriş Yap'
+          visible={visible}
+          onClose={() => { setVisible(false); navigation.navigate("girisYap"); }} />
 
       </View>
     </View>

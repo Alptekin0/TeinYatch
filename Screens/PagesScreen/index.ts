@@ -1,7 +1,7 @@
 import AnaSayfa from "./AnaSayfa";
 import Favorilerim from "./Favorilerim";
-import Profilim from "./Profilim";
+import ProfileNavigator from "./ProfileNavigator";
 import Rezervasyonlarım from "./Rezervasyonlarım";
 
 
-export { AnaSayfa, Rezervasyonlarım, Favorilerim, Profilim }
+export { AnaSayfa, Rezervasyonlarım, Favorilerim, ProfileNavigator }
