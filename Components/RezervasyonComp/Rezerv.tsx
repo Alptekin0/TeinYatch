@@ -9,7 +9,7 @@ interface RezervId {
 const Rezerv = ({id} : RezervId) => {
      return (
           <View style={styles.imageContainer}>
-               <Image style={styles.image} source={require("../../assets/icons/tein_tekne_2.jpeg")} />
+               <Image style={styles.image} source={require("../../assets/icons/fake-yachts/tein_tekne_2.jpeg")} />
                <View style={styles.textContainer}>
 
                     <View style={styles.text}>

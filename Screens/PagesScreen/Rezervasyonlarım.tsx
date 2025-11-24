@@ -2,6 +2,7 @@ import { StyleSheet, Text, View, Image, FlatList } from 'react-native'
 import React from 'react'
 import CustomBar from '../../Components/RezervasyonComp/CustomBar'
 import Rezerv from '../../Components/RezervasyonComp/Rezerv';
+import { yachts } from '../../Fake-Data/Yatlar/yat';
 
 
 const Rezervasyon = [

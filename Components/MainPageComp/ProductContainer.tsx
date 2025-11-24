@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { ImageSourcePropType, StyleSheet, Text, View, TouchableOpacity } from 'react-native'
 import React, { memo } from 'react'
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import FontAwesome6 from '@expo/vector-icons/FontAwesome6';
@@ -7,12 +7,22 @@ import ImageFlatListComp from '../AppComp/ImageFlatListComp';
 import FavoriteIcon from './FavoriteIcon';
 
 
-interface productId {
-     id: number
+interface productProps {
+     id: number;
+     title: string;
+     location: string;
+     people: number;
+     price: number;
+     rating: number;
+     images: ImageSourcePropType[];
+}
+
+interface ProductContainerProps {
+     yachts: productProps;
 }
 
 
-const ProductContainer = ({ id }: productId) => {
+const ProductContainer = ({ yachts }: ProductContainerProps) => {
 
      return (
 
@@ -20,29 +30,29 @@ const ProductContainer = ({ id }: productId) => {
 
                <View style={styles.imageContainer}>
                     <ImageFlatListComp
-                         image1Adress={require("../../assets/icons/tein_tekne_3.jpeg")}
-                         image2Adress={require("../../assets/icons/tein_tekne_2.jpeg")}
-                         image3Adress={require("../../assets/icons/tein_tekne_3.jpeg")}
-                         image4Adress={require("../../assets/icons/tein_tekne_2.jpeg")}
-                         image5Adress={require("../../assets/icons/tein_tekne_2.jpeg")}
+                         image1Adress={yachts.images[0]}
+                         image2Adress={yachts.images[1]}
+                         image3Adress={yachts.images[2]}
+                         image4Adress={yachts.images[3]}
+                         image5Adress={yachts.images[4]}
                     />
 
-                    <FavoriteIcon id={id} />
+                    <FavoriteIcon id={yachts.id} />
 
                </View>
 
-               <View style={styles.textContainer}>
+               <TouchableOpacity style={styles.textContainer}>
                     <View style={styles.titleContainer}>
-                         <Text style={{ fontWeight: 600 }}> Tein Yat </Text>
+                         <Text style={{ fontWeight: 600 }}> {yachts.title} </Text>
                          <View style={styles.infoContainer}>
 
                               <MaterialCommunityIcons name="map-marker-radius-outline" size={26} color="#1366B2" />
-                              <Text>Bebek, İstanbul</Text>
+                              <Text>{yachts.location}</Text>
                          </View>
                          <View style={[styles.infoContainer, { marginLeft: 5 }]}>
 
                               <FontAwesome6 name="person" size={24} color="#1366B2" />
-                              <Text>  20 Kişilik</Text>
+                              <Text>  {yachts.people} Kişilik</Text>
                          </View>
 
                     </View>
@@ -51,19 +61,18 @@ const ProductContainer = ({ id }: productId) => {
                          <View style={[styles.infoContainer, { marginTop: 10 }]}>
 
                               <AntDesign name="star" size={14} color="#FF8A14" />
-                              <Text>5.0</Text>
+                              <Text>{yachts.rating}</Text>
                          </View>
 
                          <View style={[styles.infoContainer, { marginLeft: 5 }]}>
                               <Text style={{ marginTop: 5 }}>
-                                   <Text style={{ fontWeight: 600 }}>3.000 ₺</Text>
+                                   <Text style={{ fontWeight: 600 }}>{yachts.price} ₺</Text>
                                    /saat
                               </Text>
                          </View>
 
                     </View>
-               </View>
-
+               </TouchableOpacity>
           </View>
      )
 }
