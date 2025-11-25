@@ -54,7 +54,7 @@ const PagesNavigation = () => {
                               }
                               return { display: 'none' };
                          })(route),
-                    })}/>
+                    })} />
           </Tab.Navigator>
 
      )

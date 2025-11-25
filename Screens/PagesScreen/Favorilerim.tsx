@@ -1,16 +1,19 @@
 import { FlatList, StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import { useSelector } from 'react-redux'
-import { yachts } from '../../Fake-Data/Yatlar/yat'
+import { yachts } from '../../Fake-Data/KiralikYatlar/yat'
 import { CustomTabBar, ProductContainer } from '../../Components/MainPageComp'
 
 
 const Favorilerim = () => {
 
+  // {/* Burda da kiralik tabında sadece kiralik favoileri olacak. satilik da sadece satilik favori yatlar olacak. */}
 
   const favorite = useSelector((state: any) => state.isFavorite.favoritesList)
 
   const favoriteYachts = yachts.filter(yacht => favorite.includes(yacht.id));
+
+  const activeTab = useSelector((state: any) => state.MainPageActiveTab.activeTab);
 
 
   return (
@@ -20,11 +23,13 @@ const Favorilerim = () => {
       <View style={{ marginTop: -20, marginBottom: 10 }}>
         <CustomTabBar />
       </View>
-      <FlatList
+
+      {activeTab === 'kiralik' ? <FlatList
         data={favoriteYachts}
-        renderItem={({ item }) => <ProductContainer yachts={item} />}
+        renderItem={({ item }) => <ProductContainer yachts={item} onPress={() => ""} />}
         showsVerticalScrollIndicator={false}
-      />
+      /> : <></>}
+
     </View>
   )
 }

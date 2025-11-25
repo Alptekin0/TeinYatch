@@ -1,18 +1,25 @@
 import { StyleSheet, Text, View, Pressable, TouchableOpacity } from 'react-native'
 import React, { useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux';
+import { setActiveBar } from '../../Slices/MainPageActiveTabSlice';
+
 
 const CustomTabBar = () => {
 
-     const [activeTab, setActiveTab] = useState<'kiralik' | 'satilik'>('kiralik');
+     const activeTab = useSelector((state: any) => state.MainPageActiveTab.activeTab)
+
+     const dispatch = useDispatch();
 
      return (
           <Pressable style={styles.customTabBarContainer}>
 
-               <TouchableOpacity style={[styles.bar, activeTab == 'kiralik' && styles.activeTab]} onPress={() => { setActiveTab('kiralik') }}>
+               <TouchableOpacity style={[styles.bar, activeTab == 'kiralik' && styles.activeTab]}
+                    onPress={() => { dispatch(setActiveBar('kiralik')) }}>
                     <Text style={[styles.text, activeTab == 'kiralik' && styles.activeText]}>Kiralık Deniz Araçları</Text>
                </TouchableOpacity>
 
-               <TouchableOpacity style={[styles.bar, activeTab == 'satilik' && styles.activeTab]} onPress={() => { setActiveTab('satilik') }}>
+               <TouchableOpacity style={[styles.bar, activeTab == 'satilik' && styles.activeTab]}
+                    onPress={() => { dispatch(setActiveBar('satilik')) }}>
                     <Text style={[styles.text, activeTab == 'satilik' && styles.activeText]}>Satılık Deniz Araçları</Text>
                </TouchableOpacity>
 

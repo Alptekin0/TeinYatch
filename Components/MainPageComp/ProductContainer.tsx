@@ -19,10 +19,11 @@ interface productProps {
 
 interface ProductContainerProps {
      yachts: productProps;
+     onPress : () => void;
 }
 
 
-const ProductContainer = ({ yachts }: ProductContainerProps) => {
+const ProductContainer = ({ yachts, onPress }: ProductContainerProps) => {
 
      return (
 
@@ -41,7 +42,7 @@ const ProductContainer = ({ yachts }: ProductContainerProps) => {
 
                </View>
 
-               <TouchableOpacity style={styles.textContainer}>
+               <TouchableOpacity style={styles.textContainer} onPress={onPress}>
                     <View style={styles.titleContainer}>
                          <Text style={{ fontWeight: 600 }}> {yachts.title} </Text>
                          <View style={styles.infoContainer}>
