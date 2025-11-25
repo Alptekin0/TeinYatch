@@ -1,4 +1,4 @@
-// src/data/yachts.ts
+// Sahte yat verileri
 
 export const yachts = [
      {
@@ -12,8 +12,8 @@ export const yachts = [
                require("../../assets/icons/fake-yachts/tein_tekne_1.png"),
                require("../../assets/icons/fake-yachts/tein_tekne_2.jpeg"),
                require("../../assets/icons/fake-yachts/tein_tekne_3.jpeg"),
-               require("../../assets/icons/fake-yachts/tein_tekne_2.jpeg"),
-               require("../../assets/icons/fake-yachts/tein_tekne_2.jpeg"),
+               require("../../assets/icons/fake-yachts/tein_tekne_4.png"),
+               require("../../assets/icons/fake-yachts/tein_tekne_5.png"),
           ],
      },
 
@@ -41,11 +41,11 @@ export const yachts = [
           price: 5000,
           rating: 4.2,
           images: [
-               require("../../assets/icons/fake-yachts/tein_tekne_1.png"),
-               require("../../assets/icons/fake-yachts/tein_tekne_1.png"),
-               require("../../assets/icons/fake-yachts/tein_tekne_1.png"),
-               require("../../assets/icons/fake-yachts/tein_tekne_1.png"),
-               require("../../assets/icons/fake-yachts/tein_tekne_1.png"),
+               require("../../assets/icons/fake-yachts/yat2-photo1.png"),
+               require("../../assets/icons/fake-yachts/yat2-photo2.png"),
+               require("../../assets/icons/fake-yachts/yat2-photo3.png"),
+               require("../../assets/icons/fake-yachts/yat2-photo4.png"),
+               require("../../assets/icons/fake-yachts/yat2-photo5.png"),
           ],
      },
 
@@ -57,11 +57,11 @@ export const yachts = [
           price: 1800,
           rating: 4.7,
           images: [
-               require("../../assets/icons/fake-yachts/tein_tekne_1.png"),
-               require("../../assets/icons/fake-yachts/tein_tekne_1.png"),
-               require("../../assets/icons/fake-yachts/tein_tekne_1.png"),
-               require("../../assets/icons/fake-yachts/tein_tekne_1.png"),
-               require("../../assets/icons/fake-yachts/tein_tekne_1.png"),
+               require("../../assets/icons/fake-yachts/yat3-photo1.png"),
+               require("../../assets/icons/fake-yachts/yat3-photo2.png"),
+               require("../../assets/icons/fake-yachts/yat3-photo3.png"),
+               require("../../assets/icons/fake-yachts/yat3-photo4.png"),
+               require("../../assets/icons/fake-yachts/yat3-photo5.png"),
           ],
      },
 
@@ -73,11 +73,11 @@ export const yachts = [
           price: 1500,
           rating: 4.6,
           images: [
-               require("../../assets/icons/fake-yachts/tein_tekne_1.png"),
-               require("../../assets/icons/fake-yachts/tein_tekne_1.png"),
-               require("../../assets/icons/fake-yachts/tein_tekne_1.png"),
-               require("../../assets/icons/fake-yachts/tein_tekne_1.png"),
-               require("../../assets/icons/fake-yachts/tein_tekne_1.png"),
+               require("../../assets/icons/fake-yachts/yat4-photo1.png"),
+               require("../../assets/icons/fake-yachts/yat4-photo2.png"),
+               require("../../assets/icons/fake-yachts/yat4-photo3.png"),
+               require("../../assets/icons/fake-yachts/yat4-photo4.png"),
+               require("../../assets/icons/fake-yachts/yat4-photo5.png"),
           ],
      },
 ];
