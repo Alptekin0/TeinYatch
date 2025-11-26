@@ -33,12 +33,17 @@ export default FiyatVeRezervEt
 
 const styles = StyleSheet.create({
      container: {
-          width: 365,
-          height: 80,
+          width: 390,
+          height: 100,
           flexDirection: "row",
           alignItems: "center",
           justifyContent: "space-around",
           marginVertical: 5,
+          padding : 10,
+          paddingBottom : 40,
+          borderTopRightRadius : 24,
+          borderTopLeftRadius : 24,
+          backgroundColor : "#ffffffff",
      },
      priceWrapper: {
           flexDirection: "row",

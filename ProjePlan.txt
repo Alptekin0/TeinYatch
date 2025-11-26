@@ -20,6 +20,7 @@ Yapılacaklar :
   - Kayıt Ol sayfasında Kişisel Verilerin işlemesi kısmında bir modal oluşturup yazı çıkıcak.
   - Şifre yenileme Ekranı yapılacak.
   - Giriş Yap ve Kaydol ekranlarının sadece fonksiyonel bazı özellikleri eksik.
+  - Ekstra Hizmetler kişi sayısı ile çarpılmıyor.
 
 
 Eklenen Fontlar:

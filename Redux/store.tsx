@@ -6,6 +6,10 @@ import LoginReducer from "../Slices/LoginSlice"
 import AuthReducer from "../Slices/IsAuthSlice"
 import IsFavoritedReducer from "../Slices/IsFavoritedSlice"
 import MainPageActiveTabReducer from "../Slices/MainPageActiveTabSlice"
+import RezervasyonTarihSaatReducer from "../Slices/RezervasyonTarihSaat"
+import EkstraHizmetReducer from "../Slices/EkstraHizmetSlice"
+import SelectedYatIdReducer from "../Slices/SelectedYat"
+
 
 
 export const store = configureStore({
@@ -17,6 +21,9 @@ export const store = configureStore({
           Auth: AuthReducer,
           isFavorite: IsFavoritedReducer,
           MainPageActiveTab: MainPageActiveTabReducer,
+          RezervasyonTarihSaat: RezervasyonTarihSaatReducer,
+          EkstraHizmet: EkstraHizmetReducer,
+          YatId: SelectedYatIdReducer,
      }
 })
 

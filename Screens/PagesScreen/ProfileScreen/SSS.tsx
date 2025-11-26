@@ -69,7 +69,7 @@ const SSS = () => {
 
       <Image style={styles.image} source={require("../../../assets/icons/SSS.png")} />
 
-      <ScrollView contentContainerStyle={{ paddingBottom: 30 }}>
+      <ScrollView contentContainerStyle={{ paddingBottom: 45 }}>
         <List.AccordionGroup
           expandedId={expandedId}
           onAccordionPress={handlePress}

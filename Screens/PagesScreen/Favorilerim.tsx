@@ -24,12 +24,21 @@ const Favorilerim = () => {
         <CustomTabBar />
       </View>
 
-      {activeTab === 'kiralik' ? <FlatList
-        data={favoriteYachts}
-        renderItem={({ item }) => <ProductContainer yachts={item} onPress={() => ""} />}
-        showsVerticalScrollIndicator={false}
-      /> : <></>}
+      {activeTab === 'kiralik' ? (
+        favoriteYachts.length === 0 ? (
+          <Text style={{ marginTop: 250, fontSize: 18, color: 'gray' }}>
+            Favori tekneniz bulunmamaktadır.
+          </Text>)
 
+          : (<FlatList
+            data={favoriteYachts}
+            renderItem={({ item }) => (
+              <ProductContainer yachts={item} onPress={() => ""} />
+            )}
+            showsVerticalScrollIndicator={false}
+          />
+          )
+      ) : <></>}
     </View>
   )
 }

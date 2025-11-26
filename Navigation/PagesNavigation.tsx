@@ -42,7 +42,17 @@ const PagesNavigation = () => {
                     cardStyle: { backgroundColor: 'white' },
                })}
           >
-               <Tab.Screen name="AnaSayfa" component={AnaSayfa} />
+               <Tab.Screen name="AnaSayfa" component={AnaSayfa}
+                    options={({ route }) => ({
+                         tabBarStyle: ((route) => {  // Tab barı sadece profil sayfasında göster sonrasında gizle
+                              const routeName = getFocusedRouteNameFromRoute(route) ?? 'MainPage';
+                              if (routeName === 'MainPage') {
+                                   return { display: 'flex' };
+                              }
+                              return { display: 'none' };
+                         })(route),
+                    })}
+               />
                <Tab.Screen name="Rezervasyonlarım" component={Rezervasyonlarım} />
                <Tab.Screen name="Favorilerim" component={Favorilerim} />
                <Tab.Screen name="Profilim" component={ProfileNavigator}

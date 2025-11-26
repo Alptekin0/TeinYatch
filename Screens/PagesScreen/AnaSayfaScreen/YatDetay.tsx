@@ -9,17 +9,22 @@ import KiralamaSartlari from '../../../Components/MainPageComp/YatDetayComp/Kira
 import KullanimSartlari from '../../../Components/MainPageComp/YatDetayComp/KullanimSartlari';
 import YorumlamaVePuanlama from '../../../Components/MainPageComp/YatDetayComp/YorumlamaVePuanlama';
 import FiyatVeRezervEt from '../../../Components/MainPageComp/YatDetayComp/FiyatVeRezervEt';
+import { useDispatch, useSelector } from 'react-redux';
+import { setYatId } from '../../../Slices/SelectedYat';
 
 
 
-
-const YatDetay = ({navigation} : any) => {
+const YatDetay = ({ navigation }: any) => {
 
      const route = useRoute<any>();
 
      const { yatId } = route.params; // Tıklanılan yatın id'sini aldık.
 
      const selectedYachts = yachts.find((item) => item.id == yatId)  // Verilerimiz arasından id'si aynı olan yatı çektik.
+
+     const dispatch = useDispatch();
+     dispatch(setYatId(selectedYachts))
+
 
      if (!selectedYachts) {  // bu kısım eğer yat yoksa hata versin diye attık.
           return (
@@ -35,7 +40,7 @@ const YatDetay = ({navigation} : any) => {
 
                <View style={styles.infoContainer}>
 
-                    <ScrollView style={{ flex: 1 }} contentContainerStyle={{ paddingBottom: 5 }} showsVerticalScrollIndicator={false}>
+                    <ScrollView style={{ flex: 1 }} contentContainerStyle={{ paddingBottom: 40 }} showsVerticalScrollIndicator={false}>
 
 
                          <YatDetayTitle title={selectedYachts.title} location={selectedYachts.location} />
@@ -60,20 +65,18 @@ const YatDetay = ({navigation} : any) => {
                          <YatImknalar />
                          <View style={styles.divider}></View>
 
-                         <KiralamaSartlari/>
+                         <KiralamaSartlari />
                          <View style={styles.divider}></View>
 
-                         <KullanimSartlari/>
+                         <KullanimSartlari />
                          <View style={styles.divider}></View>
 
-                         <YorumlamaVePuanlama puan={selectedYachts.rating}/>
+                         <YorumlamaVePuanlama puan={selectedYachts.rating} />
 
-                         <FiyatVeRezervEt fiyat={selectedYachts.price} onPress={() =>navigation.navigate("RezervEt")}/>
-                         
+
                     </ScrollView>
-
                </View>
-
+               <FiyatVeRezervEt fiyat={selectedYachts.price} onPress={() => navigation.navigate("RezervEt")} />
           </View>
      )
 }

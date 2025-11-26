@@ -8,17 +8,30 @@ import Fontisto from '@expo/vector-icons/Fontisto';
 import Kisisayisi from '../../../Components/MainPageComp/YatDetayComp/Rezervasyon/Kisisayisi';
 import Info from '../../../Components/AppComp/Info';
 import AppButton from '../../../Components/AppComp/AppButton';
+import { useDispatch, useSelector } from 'react-redux';
+import { setEndDate, setEndTime, setStartDate, setStartTime } from '../../../Slices/RezervasyonTarihSaat';
 
-const RezervEt = ({navigation} : any) => {
+
+const RezervEt = ({ navigation }: any) => {
 
      const [isVisible, setVisible] = useState(false);
      const [mode, setMode] = useState<'date' | 'time'>('date');
      const [activePicker, setActivePicker] = useState<'startDate' | 'endDate' | 'startTime' | 'endTime' | null>(null);
 
-     const [startDate, setStartDate] = useState(new Date());
-     const [endDate, setEndDate] = useState(new Date());
-     const [startTime, setStartTime] = useState(new Date());
-     const [endTime, setEndTime] = useState(new Date());
+     const dispatch = useDispatch()
+
+     const {
+          startDate,
+          endDate,
+          startTime,
+          endTime
+     } = useSelector((state: any) => state.RezervasyonTarihSaat);
+
+     const startDateObj = startDate ? new Date(startDate) : new Date();
+     const endDateObj = endDate ? new Date(endDate) : new Date();
+     const startTimeObj = startTime ? new Date(startTime) : new Date();
+     const endTimeObj = endTime ? new Date(endTime) : new Date();
+
 
      const [step, setStep] = useState(0);
 
@@ -35,22 +48,26 @@ const RezervEt = ({navigation} : any) => {
      };
 
      const handleConfirm = (selectedDate: Date) => {
+          const iso = selectedDate.toISOString();
+
           switch (activePicker) {
                case 'startDate':
-                    setStartDate(selectedDate);
+                    dispatch(setStartDate(iso));
                     break;
                case 'endDate':
-                    setEndDate(selectedDate);
+                    dispatch(setEndDate(iso));
                     break;
                case 'startTime':
-                    setStartTime(selectedDate);
+                    dispatch(setStartTime(iso));
                     break;
                case 'endTime':
-                    setEndTime(selectedDate);
+                    dispatch(setEndTime(iso));
                     break;
           }
+
           setVisible(false);
      };
+
 
      return (
           <View style={{ flex: 1, padding: 20 }}>
@@ -67,14 +84,14 @@ const RezervEt = ({navigation} : any) => {
                               placeholder='Tarih Seçiniz'
                               icon={<Fontisto name="date" size={20} color="#1366B2" />}
                               onPress={() => openPicker('startDate')}
-                              value={startDate.toLocaleDateString()}
+                              value={startDateObj.toLocaleDateString()}
                          />
                          <TarihVeSaatButton
                               title='Bitiş Tarihi'
                               placeholder='Tarih Seçiniz'
                               icon={<Fontisto name="date" size={20} color="#1366B2" />}
                               onPress={() => openPicker('endDate')}
-                              value={endDate.toLocaleDateString()}
+                              value={endDateObj.toLocaleDateString()}
                          />
                     </View>
                     <View style={styles.ClockInput}>
@@ -83,14 +100,14 @@ const RezervEt = ({navigation} : any) => {
                               placeholder='Saat Seçiniz'
                               icon={<Fontisto name="clock" size={20} color="#1366B2" />}
                               onPress={() => openPicker('startTime')}
-                              value={startTime.toLocaleTimeString()}
+                              value={startTimeObj.toLocaleTimeString()}
                          />
                          <TarihVeSaatButton
                               title='Bitiş Saati'
                               placeholder='Saat Seçiniz'
                               icon={<Fontisto name="clock" size={20} color="#1366B2" />}
                               onPress={() => openPicker('endTime')}
-                              value={endTime.toLocaleTimeString()}
+                              value={endTimeObj.toLocaleTimeString()}
                          />
                     </View>
                     <View style={styles.info}>
@@ -98,17 +115,17 @@ const RezervEt = ({navigation} : any) => {
                     </View>
                     <Kisisayisi />
 
-                    <View style = {styles.buttonWrapper}>
+                    <View style={styles.buttonWrapper}>
 
-                    <AppButton width={330}
-                         height={48}
-                         title='Devam Et'
-                         borderRadius={5}
-                         color='white'
-                         fontSize={20}
-                         fontWeight={600}
-                         onPress={() => {navigation.navigate('RezervEkstraHizmet')}}
-                         backgroundColor='#1366B2' />
+                         <AppButton width={330}
+                              height={48}
+                              title='Devam Et'
+                              borderRadius={5}
+                              color='white'
+                              fontSize={20}
+                              fontWeight={600}
+                              onPress={() => { navigation.navigate('RezervEkstraHizmet') }}
+                              backgroundColor='#1366B2' />
                     </View>
 
                </View>
@@ -118,14 +135,14 @@ const RezervEt = ({navigation} : any) => {
                     setVisible={setVisible}
                     mode={mode}
                     date={
-                         activePicker === 'startDate' ? startDate :
-                              activePicker === 'endDate' ? endDate :
-                                   activePicker === 'startTime' ? startTime :
-                                        activePicker === 'endTime' ? endTime : new Date()
+                         activePicker === 'startDate' ? startDateObj :
+                              activePicker === 'endDate' ? endDateObj :
+                                   activePicker === 'startTime' ? startTimeObj :
+                                        activePicker === 'endTime' ? endTimeObj :
+                                             new Date()
                     }
                     setDate={handleConfirm}
                />
-
 
           </View>
      );
@@ -158,8 +175,8 @@ const styles = StyleSheet.create({
           marginTop: 40,
           marginBottom: 10
      },
-     buttonWrapper : {
-          marginTop : 20,
-          alignSelf : "center",
+     buttonWrapper: {
+          marginTop: 55,
+          alignSelf: "center",
      }
 });
