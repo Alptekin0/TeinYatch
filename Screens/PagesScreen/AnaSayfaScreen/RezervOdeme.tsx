@@ -1,36 +1,41 @@
 import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import React, { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { EkstraHizmetler } from '../../../Fake-Data/EkstraHizmetler'
 import { RootState, AppDispatch } from '../../../Redux/store'
-import { toggleOption } from '../../../Slices/EkstraHizmetSlice'
-import EkstraHizmetRadioButton from '../../../Components/MainPageComp/YatDetayComp/Rezervasyon/EkstraHizmetRadioButton'
 import StepIndicatorComp from '../../../Components/MainPageComp/YatDetayComp/Rezervasyon/StepIndıcator'
 import Header from '../../../Components/AppComp/AppPagesHeader'
 import { ScrollView } from 'react-native-gesture-handler'
 import TextWithSpace from '../../../Components/AppComp/TextWithSpace'
-import KrediKartiArea from '../../../Components/RezervasyonComp/KrediKartiArea'
+import ClosableAreaCard from '../../../Components/RezervasyonComp/ClosableAreaCard'
+import ClosableAreaEFT from '../../../Components/RezervasyonComp/ClosableAreaEFT'
+import RadioButtonComponent from '../../../Components/AppComp/RadioButtonComponent'
+import AppButton from '../../../Components/AppComp/AppButton'
+import { setTotalPrice } from '../../../Slices/TotalPrice'
 
 
-const RezervOdeme = () => {
+const RezervOdeme = ({ navigation }: any) => {
 
   const dispatch = useDispatch<AppDispatch>()
   const selectedOptions = useSelector((state: RootState) => state.EkstraHizmet.selectedOptions)
   const YatIdRedux = useSelector((state: any) => state.YatId.yatId);
 
-  console.log(YatIdRedux.price)
+  const [sozlesmeCheck, setSozlesmeCheck] = useState(false);
+
 
   const totalPrice = EkstraHizmetler
     .flatMap(cat => cat.options)
     .filter(opt => selectedOptions[opt.id])
     .reduce((sum, opt) => sum + opt.price, 0)
 
+  dispatch(setTotalPrice(totalPrice + YatIdRedux.price));
+
   return (
     <View>
       <Header text='Rezervasyon Yap' />
-      <StepIndicatorComp currentStep={2} />
+      <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{ paddingBottom: 160 }}>
+        <StepIndicatorComp currentStep={2} />
 
-      <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{ paddingVertical: 20 }}>
 
         <View style={styles.bodyWrapper}>
           <Text style={styles.title}>Toplam Ödeme Tutarı</Text>
@@ -43,10 +48,35 @@ const RezervOdeme = () => {
           <TextWithSpace text='Ön Ödeme Tutarı' fiyat={(YatIdRedux.price + totalPrice) / 2} />
           <TextWithSpace text='Teknede Verilecek Tutar' fiyat={(YatIdRedux.price + totalPrice) / 2} />
 
-          <Text style={[styles.title, {marginTop : 30}]}>Ödeme Seçenekleri</Text>
+          <Text style={[styles.title, { marginTop: 30 }]}>Ödeme Seçenekleri</Text>
           <View style={styles.divider}></View>
 
-          <KrediKartiArea/>
+          <ClosableAreaCard />
+          <View style={{ marginTop: 20 }}></View>
+          <ClosableAreaEFT />
+
+          <View style={{ marginTop: 95 }}>
+            <RadioButtonComponent
+              checked={sozlesmeCheck}
+              height={150}
+              width={320}
+              text='Ön Bilgilendirme Koşullarını, Cayma Hakkı ve Mesafeli Satış Sözleşmesi’ni okudum, onaylıyorum.'
+              onPress={() => setSozlesmeCheck(!sozlesmeCheck)} />
+          </View>
+
+          <View style={{ alignItems: "center", marginTop: -40 }}>
+            <AppButton backgroundColor='#1366B2'
+              borderRadius={5}
+              color='white'
+              fontSize={17}
+              height={48}
+              width={330}
+              title='Onayla'
+              fontWeight={600}
+              onPress={() => { navigation.navigate('RezervOnay') }} />
+          </View>
+
+
 
         </View>
       </ScrollView>

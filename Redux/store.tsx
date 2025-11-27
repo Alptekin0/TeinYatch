@@ -9,6 +9,8 @@ import MainPageActiveTabReducer from "../Slices/MainPageActiveTabSlice"
 import RezervasyonTarihSaatReducer from "../Slices/RezervasyonTarihSaat"
 import EkstraHizmetReducer from "../Slices/EkstraHizmetSlice"
 import SelectedYatIdReducer from "../Slices/SelectedYat"
+import TotalPriceReducer from "../Slices/TotalPrice"
+import RezervYatReducer from "../Slices/RezervYat"
 
 
 
@@ -24,6 +26,9 @@ export const store = configureStore({
           RezervasyonTarihSaat: RezervasyonTarihSaatReducer,
           EkstraHizmet: EkstraHizmetReducer,
           YatId: SelectedYatIdReducer,
+          TotalPrice: TotalPriceReducer,
+          RezervYat: RezervYatReducer
+
      }
 })
 

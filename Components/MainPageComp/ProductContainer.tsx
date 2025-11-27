@@ -19,7 +19,7 @@ interface productProps {
 
 interface ProductContainerProps {
      yachts: productProps;
-     onPress : () => void;
+     onPress: () => void;
 }
 
 
