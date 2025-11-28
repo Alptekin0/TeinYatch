@@ -5,14 +5,20 @@ import { useNavigation } from '@react-navigation/native'
 interface ProfileMenuProps {
      text: string,
      icon: React.ReactNode
-     route : string
-
+     route: string
+     onPress?: () => void
 }
 
-const ProfileMenu = ({ text, icon, route }: ProfileMenuProps) => {
+const ProfileMenu = ({ text, icon, route, onPress }: ProfileMenuProps) => {
      const navigation = useNavigation<any>();
+
+     const handlePress = () => {
+          if (onPress) return onPress(); // Modal için
+          navigation.navigate(route);    // Normal navigation
+     };
+
      return (
-          <TouchableOpacity style={styles.container} onPress={ () => navigation.navigate(route)}>
+          <TouchableOpacity style={styles.container} onPress={handlePress}>
                <Text style={styles.text}>{text}</Text>
                {icon}
           </TouchableOpacity>
@@ -35,6 +41,6 @@ const styles = StyleSheet.create({
      },
      text: {
           fontSize: 17,
-          fontWeight: 500,
+          fontWeight: "500",
      }
 })

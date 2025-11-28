@@ -11,6 +11,8 @@ const Rezervasyonlarım = () => {
 
   // RezervYat sadece bekleyen rezerve gider. Onaylanan ve Geçmiş Rezervasyon için acente
   const RezervYat = useSelector((state: any) => state.RezervYat.RezervYat ?? []);
+  const OnaylananYat = useSelector((state: any) => state.RezervYatOnaylanan.OnaylananYat);
+  const GecmisRezerv = useSelector((state: any) => state.GecmisRezerv.gecmisRezerv);
 
   const [active, setActive] = useState("Bekleyen") // Aktif Tab kontrol
 
@@ -61,13 +63,13 @@ const Rezervasyonlarım = () => {
 
       {
         active === 'Onaylanan' && (
-          RezervYat.length === 0
+          OnaylananYat.length === 0
             ?
             <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
               <Text style={{ fontSize: 18 }}>Onaylanan Rezervasyonlarınız bulunmamaktadır.</Text>
             </View>
             : <FlatList
-              data={RezervYat}
+              data={OnaylananYat}
               renderItem={({ item }) => (<Rezerv id={item.id} location={item.location} image={item.images[0]} />)}
               keyExtractor={(item) => item.id.toString()}
               showsVerticalScrollIndicator={false}
@@ -77,13 +79,13 @@ const Rezervasyonlarım = () => {
 
       {
         active === 'Geçmiş' && (
-          RezervYat.length === 0
+          GecmisRezerv.length === 0
             ?
             <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
               <Text style={{ fontSize: 18 }}>Henüz Hiç Rezevasyon Yapmadınız.</Text>
             </View>
             : <FlatList
-              data={RezervYat}
+              data={GecmisRezerv}
               renderItem={({ item }) => (<Rezerv id={item.id} location={item.location} image={item.images[0]} />)}
               keyExtractor={(item) => item.id.toString()}
               showsVerticalScrollIndicator={false}

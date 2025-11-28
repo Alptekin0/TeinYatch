@@ -6,7 +6,7 @@ import SonucText from '../../../Components/RezervasyonComp/SonucText';
 import Info from '../../../Components/AppComp/Info';
 import AppButton from '../../../Components/AppComp/AppButton';
 import { useDispatch, useSelector } from 'react-redux';
-import { addRezervYat, clearRezervYat } from '../../../Slices/RezervYat';
+import { addRezervYat, clearRezervYat } from '../../../Slices/RezervSlice/RezervYat';
 
 
 const RezervOnay = ({ navigation }: any) => {

@@ -33,6 +33,9 @@ const ClosableAreaCard = () => {
      const [CVC, setCVC] = useState(['']);
 
      const inputs = useRef<Array<TextInput | null>>([]);
+     const inputsSKT = useRef<Array<TextInput | null>>([]);
+     const inputsCVC = useRef<Array<TextInput | null>>([]);
+
 
      const handleChange = (text: string, index: number) => {
           const cleanText = text.replace(/[^0-9]/g, '');
@@ -56,11 +59,13 @@ const ClosableAreaCard = () => {
           setSonkullanimTarihi(SKT);
 
           if (cleanText.length === 2 && index < 1) {
-               inputs.current[index + 1]?.focus();
+              inputsSKT.current[index + 1]?.focus();
+
           }
 
           if (cleanText.length === 0 && index > 0) {
-               inputs.current[index - 1]?.focus();
+               inputsSKT.current[index - 1]?.focus();
+
           }
      };
 
@@ -132,7 +137,8 @@ const ClosableAreaCard = () => {
                                              keyboardType="number-pad"
                                              value={section}
                                              onChangeText={(text) => handleChangeSKT(text, index)}
-                                             ref={(ref) => { inputs.current[index] = ref; }}
+                                             ref={(ref) => { inputsSKT.current[index] = ref; }}
+
                                         />
                                    ))}
                               </View>
@@ -152,7 +158,7 @@ const ClosableAreaCard = () => {
                                              keyboardType="number-pad"
                                              value={section}
                                              onChangeText={(text) => handleChangeCVC(text, index)}
-                                             ref={(ref) => { inputs.current[index] = ref; }}
+                                             ref={(ref) => { inputsCVC.current[index] = ref; }}     
                                         />
                                    ))}
                               </View>
