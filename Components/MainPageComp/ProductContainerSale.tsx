@@ -13,26 +13,25 @@ interface ProductContainerSaleProp {
      id: number
 }
 
-
 const ProductContainerSale = ({ images, title, location, price, id, onPress }: ProductContainerSaleProp) => { // favori iconu eklenecek
      return (
           <View style={styles.container}>
                <ImageFlatListComp image1Adress={images[0]} />
 
                <TouchableOpacity style={styles.textContainer} onPress={onPress}>
-                    <View style={styles.titleContainer}>
-                         <Text style={styles.title}> {title} </Text>
 
-                    </View>
-
-                    <View style={styles.moneycontainer}>
-                         <View style={styles.infoContainer}>
-                              <MaterialCommunityIcons name="map-marker-radius-outline" size={26} color="#1366B2" />
+                    <View style={styles.titleAndLocationWrapper}>
+                         <View style={styles.titleWrapper}>
+                              <Text style={styles.title}>{title}</Text>
+                         </View>
+                         <View style={styles.locationWrapper}>
+                              <MaterialCommunityIcons name="map-marker-radius-outline" size={24} color="#1366B2" />
                               <Text style={styles.location}>{location}</Text>
                          </View>
-                         <View style={[styles.infoContainer, { marginLeft: 5 }]}>
-                              <Text style={styles.price}>{price} ₺</Text>
-                         </View>
+                    </View>
+
+                    <View style={styles.priceContainer}>
+                         <Text style={styles.price}>{price} ₺</Text>
                     </View>
                </TouchableOpacity>
           </View>
@@ -50,40 +49,44 @@ const styles = StyleSheet.create({
      },
      textContainer: {
           width: "100%",
-          height: 70,
+          height: 80,
           marginTop: 10,
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "space-between"
+          flexDirection: "row",
      },
-     titleContainer: {
+     titleAndLocationWrapper: {
+          width: "70%",
+          height: "100%",
+     },
+     titleWrapper: {
           width: "100%",
-          height: 30,
+          height: "40%",
           justifyContent: "center",
      },
      title: {
           fontSize: 20,
-          fontWeight: 600,
+          fontWeight: 500,
      },
-     moneycontainer: {
-          width: "95%",
-          height: 40,
-          marginRight: 20,
-          gap: 5,
-          alignItems: "center",
-          justifyContent: "space-between",
+     locationWrapper: {
+          width: "100%",
+          height: "60%",
           flexDirection: "row",
-     },
-     infoContainer: {
-          flexDirection: "row",
-          alignItems: "center",
-          gap: 5,
+          alignItems: "flex-start",
+          marginTop: 3,
+          gap: 2,
      },
      location: {
-          fontSize: 16,
+          fontSize: 14,
+          marginTop: 3,
+     },
+     priceContainer: {
+          width: "30%",
+          height: "100%",
+          alignItems: "center",
+          justifyContent: "center",
      },
      price: {
-          color: "#1366B2",
-          fontSize: 20,
+          fontSize: 17,
+          fontWeight: 500,
+          marginBottom: 8,
      }
 })

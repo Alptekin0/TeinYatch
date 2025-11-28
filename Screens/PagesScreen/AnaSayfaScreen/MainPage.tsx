@@ -1,5 +1,5 @@
 import { StyleSheet, Text, View, Image, FlatList } from 'react-native'
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
 import { LocationSelector, CustomTabBar, ProductContainer } from '../../../Components/MainPageComp'
 import { useSelector } from 'react-redux';
 import { yachts } from '../../../Fake-Data/KiralikYatlar/yat';
@@ -7,11 +7,17 @@ import { SatilikYat } from '../../../Fake-Data/SatilikYatlar/SatilikYat';
 import ProductContainerSale from '../../../Components/MainPageComp/ProductContainerSale';
 
 
+
 const MainPage = ({ navigation }: any) => {
 
      const activeTab = useSelector((state: any) => state.MainPageActiveTab.activeTab)
 
-     // { /* Bu kısımda active tab satılık ise satılık gemi verileri gelecek. */}
+     const flatListRef = useRef<FlatList<any>>(null);
+
+     useEffect(() => {
+
+          flatListRef.current?.scrollToOffset({ animated: false, offset: 0 });
+     }, [activeTab]);
 
      return (
           <View style={styles.container}>
@@ -28,6 +34,7 @@ const MainPage = ({ navigation }: any) => {
                          renderItem={({ item }) => (<ProductContainer yachts={item}
                               onPress={() => navigation.navigate("YatDetay", { yatId: item.id })} />)}
                          showsVerticalScrollIndicator={false}
+                         ref={flatListRef}
                     />
                     : <FlatList
                          data={SatilikYat}
@@ -41,7 +48,9 @@ const MainPage = ({ navigation }: any) => {
                                         id={item.id}
                                         onPress={() => navigation.navigate("YatDetayForSale", { yatId: item.id })} />)}
                          showsVerticalScrollIndicator={false}
+                         ref={flatListRef}
                     />}
+
 
           </View>
      )

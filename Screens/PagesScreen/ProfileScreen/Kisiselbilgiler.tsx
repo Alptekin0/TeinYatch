@@ -5,6 +5,8 @@ import AvatarComp from '../../../Components/ProfileComp/AvatarComp'
 import Input from '../../../Components/AppComp/Input'
 import AppButton from '../../../Components/AppComp/AppButton'
 import ModalComponent from '../../../Components/AppComp/ModalComponent'
+import FormWrapper from '../../../Components/AppComp/FormWrapper'
+
 
 
 const Kisiselbilgiler = () => {
@@ -18,93 +20,97 @@ const Kisiselbilgiler = () => {
   const [visible, setVisible] = useState(false);
 
   return (
-    <View>
-      <Header text='Kişisel Bilgilerim' />
-      <View style={styles.avatarWrapper}>
-        <AvatarComp />
-      </View>
 
-      <TouchableOpacity style={styles.degisTextWrapper}>
-        <Text style={styles.degisText}>Profil Fotoğrafınızı Değiştirin</Text>
-      </TouchableOpacity>
+    <FormWrapper scrollHeight={80}>
 
-      <View style={styles.inputWrapper}>
+      <View>
+        <Header text='Kişisel Bilgilerim' />
+        <View style={styles.avatarWrapper}>
+          <AvatarComp />
+        </View>
 
-        <Input Title='İsim'
-          height={47}
-          width={330}
-          placeholder='İsim'
-          keyboardType='default'
-          value={isim}
-          onChangeText={(text) => setİsim(text)} />
+        <TouchableOpacity style={styles.degisTextWrapper}>
+          <Text style={styles.degisText}>Profil Fotoğrafınızı Değiştirin</Text>
+        </TouchableOpacity>
 
-        <Input Title='Soyisim'
-          height={47}
-          width={330}
-          placeholder='Soyisim'
-          keyboardType='default'
-          value={soyİsim}
-          onChangeText={(text) => setSoyisim(text)} />
+        <View style={styles.inputWrapper}>
 
-        <View style={styles.container}>
-          <Text style={styles.title}>Telefon Numarası</Text>
-          <View style={{ flexDirection: "row", gap: 8 }}>
+          <Input Title='İsim'
+            height={47}
+            width={330}
+            placeholder='İsim'
+            keyboardType='default'
+            value={isim}
+            onChangeText={(text) => setİsim(text)} />
 
-            <View style={styles.telKodu}>
-              <Image style={{ width: 20, height: 20 }} source={require("../../../assets/icons/Turkiye.png")} />
-              <Text style={{ fontSize: 16, fontWeight: 500 }}>+90</Text>
+          <Input Title='Soyisim'
+            height={47}
+            width={330}
+            placeholder='Soyisim'
+            keyboardType='default'
+            value={soyİsim}
+            onChangeText={(text) => setSoyisim(text)} />
+
+          <View style={styles.container}>
+            <Text style={styles.title}>Telefon Numarası</Text>
+            <View style={{ flexDirection: "row", gap: 8 }}>
+
+              <View style={styles.telKodu}>
+                <Image style={{ width: 20, height: 20 }} source={require("../../../assets/icons/Turkiye.png")} />
+                <Text style={{ fontSize: 16, fontWeight: 500 }}>+90</Text>
+              </View>
+
+              <TextInput style={styles.telNoInput}
+                value={TelefonNo}
+                keyboardType='number-pad'
+                onChangeText={(text) => setTelefonNo(text)}
+                placeholder='Telefon Numarası'
+                maxLength={10}
+              />
             </View>
-
-            <TextInput style={styles.telNoInput}
-              value={TelefonNo}
-              keyboardType='number-pad'
-              onChangeText={(text) => setTelefonNo(text)}
-              placeholder='Telefon Numarası'
-              maxLength={10}
-            />
           </View>
+
+
+          <Input Title='E-Posta'
+            height={47}
+            width={330}
+            placeholder='E-Posta'
+            keyboardType='default'
+            value={mail}
+            onChangeText={(text) => setMail(text)} />
+
+          <Input Title='Doğum Tarihi'
+            height={47}
+            width={330}
+            placeholder='Doğum Tarihi'
+            keyboardType='default'
+            value={dogumTarihi}
+            onChangeText={(text) => setDogumTarihi(text)} />
+
+          <View style={styles.buttonWrapper}>
+
+            <AppButton title='Kaydet'
+              fontSize={20}
+              height={44}
+              width={240}
+              backgroundColor='#1366B2'
+              borderRadius={5}
+              color='white'
+              fontWeight={500}
+              onPress={() => setVisible(!visible)} />
+          </View>
+
+
+          <ModalComponent title='Başarılı'
+            text='Profil Bilgileriniz Başarı ile Oluşturuldu'
+            ButtonTitle='Kapat'
+            visible={visible}
+            onClose={() => setVisible(false)} />
         </View>
 
 
-        <Input Title='E-Posta'
-          height={47}
-          width={330}
-          placeholder='E-Posta'
-          keyboardType='default'
-          value={mail}
-          onChangeText={(text) => setMail(text)} />
-
-        <Input Title='Doğum Tarihi'
-          height={47}
-          width={330}
-          placeholder='Doğum Tarihi'
-          keyboardType='default'
-          value={dogumTarihi}
-          onChangeText={(text) => setDogumTarihi(text)} />
-
-        <View style={styles.buttonWrapper}>
-
-          <AppButton title='Kaydet'
-            fontSize={20}
-            height={44}
-            width={240}
-            backgroundColor='#1366B2'
-            borderRadius={5}
-            color='white'
-            fontWeight={500}
-            onPress={() => setVisible(!visible)} />
-        </View>
-
-
-        <ModalComponent title='Başarılı'
-          text='Profil Bilgileriniz Başarı ile Oluşturuldu'
-          ButtonTitle='Kapat'
-          visible={visible}
-          onClose={() => setVisible(false)} />
       </View>
-
-
-    </View>
+    </FormWrapper>
   )
 }
 
@@ -140,7 +146,7 @@ const styles = StyleSheet.create({
     width: 330,
     height: 72,
     marginBottom: -8,
-    marginTop : -8,
+    marginTop: -8,
   },
   title: {
     alignSelf: "flex-start",

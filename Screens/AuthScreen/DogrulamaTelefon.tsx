@@ -2,6 +2,8 @@ import { StyleSheet, Text, View } from 'react-native'
 import React, { useState } from 'react'
 import AppButton from '../../Components/AppComp/AppButton'
 import Input from '../../Components/AppComp/Input'
+import FormWrapper from '../../Components/AppComp/FormWrapper'
+
 
 
 const DogrulamaTelefon = ({ navigation }: any) => {
@@ -9,54 +11,56 @@ const DogrulamaTelefon = ({ navigation }: any) => {
   const [telefon, setTelefon] = useState("");
 
   return (
-    <View style={styles.container}>
+    <FormWrapper scrollHeight={150}>
+      <View style={styles.container}>
 
-      <View style={styles.titleWrapper}>
-        <Text style={styles.title}>Şifre Yenileme</Text>
+        <View style={styles.titleWrapper}>
+          <Text style={styles.title}>Şifre Yenileme</Text>
+        </View>
+
+        <View style={styles.textWrapper}>
+          <Text style={styles.text}>
+            Şifre yenileme bağlantısını{'\n'}gönderebilmemiz için telefon{'\n'}numaranıza ihtiyacımız var.
+          </Text>
+        </View>
+
+        <View style={styles.inputWrapper}>
+          <Input Title='Telefon'
+            height={72}
+            width={330}
+            keyboardType='email-address'
+            placeholder='Telefon'
+            onChangeText={(text) => setTelefon(text)}
+            value={telefon} />
+        </View>
+
+        <View style={styles.buttonWrapper}>
+          <AppButton width={330}
+            height={40}
+            onPress={() => (navigation.navigate("SifreYenilemeTelefon"))}
+            paddingHorizontal={32}
+            paddingVertical={8}
+            title='Devam Et'
+            color='white'
+            fontSize={16}
+            fontWeight={600}
+            backgroundColor='#0568C3'
+            borderRadius={8} />
+
+          <AppButton width={330}
+            height={40}
+            onPress={() => (navigation.navigate("sifremiUnuttum"))}
+            paddingHorizontal={32}
+            paddingVertical={8}
+            title='Önceki sayfaya dön'
+            color='white'
+            fontSize={16}
+            fontWeight={600}
+            backgroundColor='#0568C3'
+            borderRadius={8} />
+        </View>
       </View>
-
-      <View style={styles.textWrapper}>
-        <Text style={styles.text}>
-          Şifre yenileme bağlantısını{'\n'}gönderebilmemiz için telefon{'\n'}numaranıza ihtiyacımız var.
-        </Text>
-      </View>
-
-      <View style={styles.inputWrapper}>
-        <Input Title='Telefon'
-          height={72}
-          width={330}
-          keyboardType='email-address'
-          placeholder='Telefon'
-          onChangeText={(text) => setTelefon(text)}
-          value={telefon} />
-      </View>
-
-      <View style={styles.buttonWrapper}>
-        <AppButton width={330}
-          height={40}
-          onPress={() => (navigation.navigate("SifreYenilemeTelefon"))}
-          paddingHorizontal={32}
-          paddingVertical={8}
-          title='Devam Et'
-          color='white'
-          fontSize={16}
-          fontWeight={600}
-          backgroundColor='#0568C3'
-          borderRadius={8} />
-
-        <AppButton width={330}
-          height={40}
-          onPress={() => (navigation.navigate("sifremiUnuttum"))}
-          paddingHorizontal={32}
-          paddingVertical={8}
-          title='Önceki sayfaya dön'
-          color='white'
-          fontSize={16}
-          fontWeight={600}
-          backgroundColor='#0568C3'
-          borderRadius={8} />
-      </View>
-    </View>
+    </FormWrapper>
   )
 }
 

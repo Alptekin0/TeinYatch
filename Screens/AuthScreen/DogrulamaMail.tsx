@@ -2,61 +2,64 @@ import { StyleSheet, Text, View } from 'react-native'
 import React, { useState } from 'react'
 import Input from '../../Components/AppComp/Input'
 import AppButton from '../../Components/AppComp/AppButton'
+import FormWrapper from '../../Components/AppComp/FormWrapper'
 
 const DogrulamaMail = ({ navigation }: any) => {
 
   const [email, setEmail] = useState("");
 
   return (
-    <View style={styles.container}>
+    <FormWrapper scrollHeight={150}>
+      <View style={styles.container}>
 
-      <View style={styles.titleWrapper}>
-        <Text style={styles.title}>Şifre Yenileme</Text>
-      </View>
+        <View style={styles.titleWrapper}>
+          <Text style={styles.title}>Şifre Yenileme</Text>
+        </View>
 
-      <View style={styles.textWrapper}>
-        <Text style={styles.text}>
-          Şifre yenileme bağlantısını{'\n'}gönderebilmemiz için e-posta{'\n'}adresinize ihtiyacımız var.
-        </Text>
-      </View>
+        <View style={styles.textWrapper}>
+          <Text style={styles.text}>
+            Şifre yenileme bağlantısını{'\n'}gönderebilmemiz için e-posta{'\n'}adresinize ihtiyacımız var.
+          </Text>
+        </View>
 
-      <View style={styles.inputWrapper}>
-        <Input Title='E-Mail'
-          height={72}
-          width={330}
-          keyboardType='email-address'
-          placeholder='E-Mail'
-          onChangeText={(text) =>
-            setEmail(text)} value={email} />
-      </View>
+        <View style={styles.inputWrapper}>
+          <Input Title='E-Mail'
+            height={72}
+            width={330}
+            keyboardType='email-address'
+            placeholder='E-Mail'
+            onChangeText={(text) =>
+              setEmail(text)} value={email} />
+        </View>
 
-      <View style={styles.buttonWrapper}>
-        <AppButton width={330}
-          height={40}
-          onPress={() => (navigation.navigate("SifreYenilemeMail"))}
-          paddingHorizontal={32}
-          paddingVertical={8}
-          title='Devam Et'
-          color='white'
-          fontSize={16}
-          fontWeight={600}
-          backgroundColor='#0568C3'
-          borderRadius={8} />
+        <View style={styles.buttonWrapper}>
+          <AppButton width={330}
+            height={40}
+            onPress={() => (navigation.navigate("SifreYenilemeMail"))}
+            paddingHorizontal={32}
+            paddingVertical={8}
+            title='Devam Et'
+            color='white'
+            fontSize={16}
+            fontWeight={600}
+            backgroundColor='#0568C3'
+            borderRadius={8} />
 
-        <AppButton width={330}
-          height={40}
-          onPress={() => (navigation.navigate("sifremiUnuttum"))}
-          paddingHorizontal={32}
-          paddingVertical={8}
-          title='Önceki sayfaya dön'
-          color='white'
-          fontSize={16}
-          fontWeight={600}
-          backgroundColor='#0568C3'
-          borderRadius={8} />
-      </View>
+          <AppButton width={330}
+            height={40}
+            onPress={() => (navigation.navigate("sifremiUnuttum"))}
+            paddingHorizontal={32}
+            paddingVertical={8}
+            title='Önceki sayfaya dön'
+            color='white'
+            fontSize={16}
+            fontWeight={600}
+            backgroundColor='#0568C3'
+            borderRadius={8} />
+        </View>
 
-    </View >
+      </View >
+    </FormWrapper>
   )
 }
 

@@ -59,7 +59,7 @@ const ClosableAreaCard = () => {
           setSonkullanimTarihi(SKT);
 
           if (cleanText.length === 2 && index < 1) {
-              inputsSKT.current[index + 1]?.focus();
+               inputsSKT.current[index + 1]?.focus();
 
           }
 
@@ -77,6 +77,7 @@ const ClosableAreaCard = () => {
      };
 
      return (
+
           <View style={[styles.container, { height }]}>
 
                <View style={styles.titleWrapper}>
@@ -158,7 +159,7 @@ const ClosableAreaCard = () => {
                                              keyboardType="number-pad"
                                              value={section}
                                              onChangeText={(text) => handleChangeCVC(text, index)}
-                                             ref={(ref) => { inputsCVC.current[index] = ref; }}     
+                                             ref={(ref) => { inputsCVC.current[index] = ref; }}
                                         />
                                    ))}
                               </View>
@@ -167,6 +168,7 @@ const ClosableAreaCard = () => {
                     </View>
                </View>
           </View>
+
      )
 }
 

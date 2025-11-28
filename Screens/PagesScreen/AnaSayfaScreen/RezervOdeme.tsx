@@ -12,6 +12,8 @@ import ClosableAreaEFT from '../../../Components/RezervasyonComp/ClosableAreaEFT
 import RadioButtonComponent from '../../../Components/AppComp/RadioButtonComponent'
 import AppButton from '../../../Components/AppComp/AppButton'
 import { setTotalPrice } from '../../../Slices/TotalPrice'
+import FormWrapper from '../../../Components/AppComp/FormWrapper';
+
 
 
 const RezervOdeme = ({ navigation }: any) => {
@@ -31,58 +33,61 @@ const RezervOdeme = ({ navigation }: any) => {
   dispatch(setTotalPrice(totalPrice + YatIdRedux.price));
 
   return (
-    <View>
-      <Header text='Rezervasyon Yap' />
-      <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{ paddingBottom: 160 }}>
-        <StepIndicatorComp currentStep={2} />
+    <FormWrapper scrollHeight={180}>
+
+      <View>
+        <Header text='Rezervasyon Yap' />
+        <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{ paddingBottom: 160 }}>
+          <StepIndicatorComp currentStep={2} />
 
 
-        <View style={styles.bodyWrapper}>
-          <Text style={styles.title}>Toplam Ödeme Tutarı</Text>
-          <View style={{ marginTop: 10 }}></View>
-          <TextWithSpace text='Tutar' fiyat={YatIdRedux.price} />
-          <TextWithSpace text='Ekstra Hizmet Bedeli' fiyat={totalPrice} />
-          <View style={styles.divider}></View>
+          <View style={styles.bodyWrapper}>
+            <Text style={styles.title}>Toplam Ödeme Tutarı</Text>
+            <View style={{ marginTop: 10 }}></View>
+            <TextWithSpace text='Tutar' fiyat={YatIdRedux.price} />
+            <TextWithSpace text='Ekstra Hizmet Bedeli' fiyat={totalPrice} />
+            <View style={styles.divider}></View>
 
-          <TextWithSpace text='Toplam' fiyat={YatIdRedux.price + totalPrice} />
-          <TextWithSpace text='Ön Ödeme Tutarı' fiyat={(YatIdRedux.price + totalPrice) / 2} />
-          <TextWithSpace text='Teknede Verilecek Tutar' fiyat={(YatIdRedux.price + totalPrice) / 2} />
+            <TextWithSpace text='Toplam' fiyat={YatIdRedux.price + totalPrice} />
+            <TextWithSpace text='Ön Ödeme Tutarı' fiyat={(YatIdRedux.price + totalPrice) / 2} />
+            <TextWithSpace text='Teknede Verilecek Tutar' fiyat={(YatIdRedux.price + totalPrice) / 2} />
 
-          <Text style={[styles.title, { marginTop: 30 }]}>Ödeme Seçenekleri</Text>
-          <View style={styles.divider}></View>
+            <Text style={[styles.title, { marginTop: 30 }]}>Ödeme Seçenekleri</Text>
+            <View style={styles.divider}></View>
 
-          <ClosableAreaCard />
-          <View style={{ marginTop: 20 }}></View>
-          <ClosableAreaEFT />
+            <ClosableAreaCard />
+            <View style={{ marginTop: 20 }}></View>
+            <ClosableAreaEFT />
 
-          <View style={{ marginTop: 95 }}>
-            <RadioButtonComponent
-              checked={sozlesmeCheck}
-              height={150}
-              width={320}
-              text='Ön Bilgilendirme Koşullarını, Cayma Hakkı ve Mesafeli Satış Sözleşmesi’ni okudum, onaylıyorum.'
-              onPress={() => setSozlesmeCheck(!sozlesmeCheck)} />
+            <View style={{ marginTop: 95 }}>
+              <RadioButtonComponent
+                checked={sozlesmeCheck}
+                height={150}
+                width={320}
+                text='Ön Bilgilendirme Koşullarını, Cayma Hakkı ve Mesafeli Satış Sözleşmesi’ni okudum, onaylıyorum.'
+                onPress={() => setSozlesmeCheck(!sozlesmeCheck)} />
+            </View>
+
+            <View style={{ alignItems: "center", marginTop: -40 }}>
+              <AppButton backgroundColor='#1366B2'
+                borderRadius={5}
+                color='white'
+                fontSize={17}
+                height={48}
+                width={330}
+                title='Onayla'
+                fontWeight={600}
+                onPress={() => { navigation.navigate('RezervOnay') }} />
+            </View>
+
+
+
           </View>
-
-          <View style={{ alignItems: "center", marginTop: -40 }}>
-            <AppButton backgroundColor='#1366B2'
-              borderRadius={5}
-              color='white'
-              fontSize={17}
-              height={48}
-              width={330}
-              title='Onayla'
-              fontWeight={600}
-              onPress={() => { navigation.navigate('RezervOnay') }} />
-          </View>
+        </ScrollView>
 
 
-
-        </View>
-      </ScrollView>
-
-
-    </View >
+      </View >
+    </FormWrapper>
   )
 }
 

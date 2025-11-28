@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { setEye, setEye2 } from '../../Slices/EyeSlice'
 import Feather from '@expo/vector-icons/Feather';
 import ModalComponent from '../../Components/AppComp/ModalComponent'
+import FormWrapper from '../../Components/AppComp/FormWrapper'
 
 
 const SifreniziBelirleyin = ({ navigation }: any) => {
@@ -21,6 +22,8 @@ const SifreniziBelirleyin = ({ navigation }: any) => {
   const eye2 = useSelector((state: any) => state.Eye.eye2)
 
   return (
+
+    <FormWrapper scrollHeight={160}>
     <View style={styles.container}>
       <View style={styles.titleWrapper}>
         <Text style={styles.title}>Yeni Şifrenizi Belirleyin</Text>
@@ -82,6 +85,7 @@ const SifreniziBelirleyin = ({ navigation }: any) => {
 
       </View>
     </View>
+    </FormWrapper>
   )
 }
 

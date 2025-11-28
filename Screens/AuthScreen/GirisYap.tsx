@@ -1,18 +1,31 @@
-import { StyleSheet, Text, View, Button, Image } from 'react-native'
+import { StyleSheet, Text, View, ScrollView, Image, KeyboardAvoidingView, Platform } from 'react-native'
 import React from 'react'
 import LoginForm from '../../Components/LoginComp/LoginForm'
 import TeinYatchText from '../../Components/AppComp/TeinYatchText'
+import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
+import FormWrapper from '../../Components/AppComp/FormWrapper';
+
+
+
 
 
 const GirisYap = ({ navigation }: any) => {
   return (
-    <View style={styles.container}>
-      <Image source={require("../../assets/icons/Yatch.jpg")} style={styles.image} />
-      <TeinYatchText />
-      <View style={styles.titleContainer}>
-        <LoginForm />
+
+
+    <FormWrapper scrollHeight={130}>
+
+      <View style={styles.container}>
+        <Image source={require("../../assets/icons/Yatch.jpg")} style={styles.image} />
+        <TeinYatchText />
+        <View style={styles.titleContainer}>
+          <LoginForm />
+        </View>
       </View>
-    </View>
+    </FormWrapper>
+
+
+
   )
 }
 
@@ -21,19 +34,18 @@ export default GirisYap
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    alignItems: "center",
   },
   image: {
     width: 320,
-    height: 207.86,
-    marginTop: 95,
-    marginLeft: 41,
-    resizeMode: "contain"
+    height: 207,
+    resizeMode: "contain",
+    marginTop: 80,
   },
   titleContainer: {
     width: 278,
-    height: 56,
-    marginTop: -10,
-    marginLeft: 57,
-    alignItems: "center"
-  },
+    marginTop: 20,
+    alignItems: "center",
+  }
+
 })
