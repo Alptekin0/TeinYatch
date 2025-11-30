@@ -5,8 +5,8 @@ import Entypo from '@expo/vector-icons/Entypo';
 import Feather from '@expo/vector-icons/Feather';
 
 interface YatDetayTitleProps {
-     title : string,
-     location : string,
+     title : string | undefined,
+     location : string | undefined,
 }
 
 

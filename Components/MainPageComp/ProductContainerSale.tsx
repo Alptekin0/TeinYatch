@@ -2,7 +2,7 @@ import { ImageSourcePropType, StyleSheet, Text, TouchableOpacity, View } from 'r
 import React from 'react'
 import ImageFlatListComp from '../AppComp/ImageFlatListComp'
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
-
+import FavoriteIconSale from './YatDetayComp/SatinAl/FavoriteIconSale';
 
 interface ProductContainerSaleProp {
      images: ImageSourcePropType[],
@@ -16,7 +16,18 @@ interface ProductContainerSaleProp {
 const ProductContainerSale = ({ images, title, location, price, id, onPress }: ProductContainerSaleProp) => { // favori iconu eklenecek
      return (
           <View style={styles.container}>
-               <ImageFlatListComp image1Adress={images[0]} />
+               <View style={styles.imageContainer}>
+                    <ImageFlatListComp
+                         image1Adress={images[0]}
+                         image2Adress={images[1]}
+                         image3Adress={images[2]}
+                         image4Adress={images[3]}
+                         image5Adress={images[4]}
+                    />
+
+                    <FavoriteIconSale id={id} />
+
+               </View>
 
                <TouchableOpacity style={styles.textContainer} onPress={onPress}>
 
@@ -46,6 +57,22 @@ const styles = StyleSheet.create({
           width: 350,
           padding: 5,
           marginTop: 10,
+     },
+     imageContainer: {
+          width: 342,
+          height: 243,
+          position: "relative",
+          overflow: "hidden",
+     },
+     heartIcon: {
+          position: 'absolute',
+          zIndex: 10,
+          top: 15,
+          right: 15,
+          width: 40,
+          height: 40,
+          alignItems: 'center',
+          justifyContent: 'center',
      },
      textContainer: {
           width: "100%",

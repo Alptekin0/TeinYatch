@@ -37,9 +37,9 @@ const styles = StyleSheet.create({
      radioItem: {
           flexDirection: "row",
           alignItems: "center",
-          justifyContent: "flex-start",
           gap: 8,
           marginTop: 2,
+          marginLeft: 10,
      },
      label: {
           fontSize: 13,

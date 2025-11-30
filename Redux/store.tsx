@@ -13,6 +13,7 @@ import TotalPriceReducer from "../Slices/TotalPrice"
 import RezervYatReducer from "../Slices/RezervSlice/RezervYat"
 import GecmisRezervReducer from "../Slices/RezervSlice/GecmisRezervSlice"
 import RezervYatOnaylananReducer from "../Slices/RezervSlice/RezervYatOnaylananSlice"
+import IsFavoriteSaleReducer from "../Slices/IsFavoriteSaleSlice"
 
 
 
@@ -31,7 +32,8 @@ export const store = configureStore({
           TotalPrice: TotalPriceReducer,
           RezervYat: RezervYatReducer,
           GecmisRezerv: GecmisRezervReducer,
-          RezervYatOnaylanan: RezervYatOnaylananReducer
+          RezervYatOnaylanan: RezervYatOnaylananReducer,
+          IsFavoriteSale: IsFavoriteSaleReducer,
 
      }
 })

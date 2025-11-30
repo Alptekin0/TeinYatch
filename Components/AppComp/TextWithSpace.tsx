@@ -3,7 +3,7 @@ import React from 'react'
 
 interface TextWithSpaceProps {
      text: string,
-     fiyat: number,
+     fiyat?: number | string,
 }
 
 const TextWithSpace = ({ text, fiyat }: TextWithSpaceProps) => {

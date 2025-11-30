@@ -36,5 +36,6 @@ const styles = StyleSheet.create({
           fontSize: 22,
           fontWeight: 500,
           letterSpacing: 1,
+          marginRight : 5,
      }
 })

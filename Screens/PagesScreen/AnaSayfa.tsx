@@ -5,7 +5,7 @@ import RezervEt from './AnaSayfaScreen/RezervEt';
 import RezervEkstraHizmet from './AnaSayfaScreen/RezervEkstraHizmet';
 import RezervOdeme from './AnaSayfaScreen/RezervOdeme';
 import RezervOnay from './AnaSayfaScreen/RezervOnay';
-import YatDetayForSale from './AnaSayfaScreen/YatDetayForSale';
+import YatDetayForSale from './AnaSayfaScreen/YatDetayForSaleNavigation';
 
 
 const Stack = createStackNavigator();

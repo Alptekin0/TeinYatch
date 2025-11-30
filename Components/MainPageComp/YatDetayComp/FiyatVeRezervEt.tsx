@@ -3,16 +3,18 @@ import React from 'react'
 import AppButton from '../../AppComp/AppButton'
 
 interface FiyatVeRezervEtProps {
-     fiyat: number;
+     fiyat?: number | string;
+     hour : string;
      onPress: () => void;
+     buttonTitle : string;
 }
 
-const FiyatVeRezervEt = ({ fiyat, onPress }: FiyatVeRezervEtProps) => {
+const FiyatVeRezervEt = ({ fiyat, onPress, buttonTitle, hour }: FiyatVeRezervEtProps) => {
      return (
           <View style={styles.container}>
                <View style={styles.priceWrapper}>
                     <Text style={styles.price}>₺{fiyat}</Text>
-                    <Text style={styles.hour}>/saat</Text>
+                    <Text style={styles.hour}>{hour}</Text>
                </View>
 
                <AppButton backgroundColor='#1366B2'
@@ -21,7 +23,7 @@ const FiyatVeRezervEt = ({ fiyat, onPress }: FiyatVeRezervEtProps) => {
                     height={40}
                     color='white'
                     fontSize={16}
-                    title='Rezervasyon Yap'
+                    title={buttonTitle}
                     fontWeight={600}
                     onPress={onPress} />
 

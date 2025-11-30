@@ -76,7 +76,7 @@ const YatDetay = ({ navigation }: any) => {
 
                     </ScrollView>
                </View>
-               <FiyatVeRezervEt fiyat={selectedYachts.price} onPress={() => navigation.navigate("RezervEt")} />
+               <FiyatVeRezervEt fiyat={selectedYachts.price} onPress={() => navigation.navigate("RezervEt")} hour='/saat' buttonTitle='Rezervasyon Yap' />
           </View>
      )
 }

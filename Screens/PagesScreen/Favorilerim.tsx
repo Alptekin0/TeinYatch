@@ -3,17 +3,28 @@ import React from 'react'
 import { useSelector } from 'react-redux'
 import { yachts } from '../../Fake-Data/KiralikYatlar/yat'
 import { CustomTabBar, ProductContainer } from '../../Components/MainPageComp'
+import { SatilikYat } from '../../Fake-Data/SatilikYatlar/SatilikYat'
+import ProductContainerSale from '../../Components/MainPageComp/ProductContainerSale'
+
 
 
 const Favorilerim = () => {
 
   // {/* Burda da kiralik tabında sadece kiralik favoileri olacak. satilik da sadece satilik favori yatlar olacak. */}
 
+  const activeTab = useSelector((state: any) => state.MainPageActiveTab.activeTab);
+
+
   const favorite = useSelector((state: any) => state.isFavorite.favoritesList)
 
   const favoriteYachts = yachts.filter(yacht => favorite.includes(yacht.id));
 
-  const activeTab = useSelector((state: any) => state.MainPageActiveTab.activeTab);
+
+
+  const favoriteSale = useSelector((state: any) => state.IsFavoriteSale.favoritesListSale)
+
+  const favoriteYachtsSale = SatilikYat.filter(SatilikYat => favoriteSale.includes(SatilikYat.id));
+
 
 
   return (
@@ -27,7 +38,7 @@ const Favorilerim = () => {
       {activeTab === 'kiralik' ? (
         favoriteYachts.length === 0 ? (
           <Text style={{ marginTop: 250, fontSize: 18, color: 'gray' }}>
-            Favori tekneniz bulunmamaktadır.
+            Favori Kiralık tekneniz bulunmamaktadır.
           </Text>)
 
           : (<FlatList
@@ -38,7 +49,21 @@ const Favorilerim = () => {
             showsVerticalScrollIndicator={false}
           />
           )
-      ) : <></>}
+      ) 
+      : favoriteYachtsSale.length === 0 ? (
+        <Text style={{ marginTop: 250, fontSize: 18, color: 'gray' }}>
+          Favori Satılık tekneniz bulunmamaktadır.
+        </Text>)
+        : (<FlatList
+          data={favoriteYachtsSale}
+          renderItem={({ item }) => (
+            <ProductContainerSale id={item.id} images={item.images} location={item.bulunduguYer} price={item.fiyat} title={item.title} onPress={() => ""} />
+          )}
+          showsVerticalScrollIndicator={false}
+        />
+        )}
+
+
     </View>
   )
 }

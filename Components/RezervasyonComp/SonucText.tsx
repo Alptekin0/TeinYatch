@@ -4,7 +4,7 @@ import React from 'react'
 interface SonucTextProps {
      
      textFirst : string,
-     text : string,
+     text ?: string,
 
 }
 

@@ -3,7 +3,7 @@ import React from 'react'
 import AntDesign from '@expo/vector-icons/AntDesign';
 
 interface YorumlamaVePuanlamaProps {
-     puan: number
+     puan?: number
 }
 
 const YorumlamaVePuanlama = ({ puan }: YorumlamaVePuanlamaProps) => {
