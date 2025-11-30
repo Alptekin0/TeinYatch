@@ -15,7 +15,8 @@ import * as Yup from 'yup';
 import { useDispatch, useSelector } from 'react-redux';
 import { setEye } from '../../Slices/EyeSlice';
 import { setEmail, setSifre } from '../../Slices/LoginSlice';
-import { setIsAuth } from '../../Slices/IsAuthSlice';
+import { setIsAuth, setIsAuthAcente } from '../../Slices/IsAuthSlice';
+
 
 
 type AuthScreenProp = StackNavigationProp<AuthStackParamList>;
@@ -42,8 +43,11 @@ const LoginForm = () => {
 
 
      const control = () => {
-          if (email == "test" && sifre == "123") {
+          if ((email == "test" && sifre == "123")) {
                dispatch(setIsAuth(true))
+          }
+          if ((email == "acente" && sifre == "123")) {
+                dispatch(setIsAuthAcente(true))
           }
      }
 

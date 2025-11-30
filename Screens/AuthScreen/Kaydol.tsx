@@ -15,7 +15,7 @@ const Kaydol = () => {
 
   return (
 
-    <FormWrapper scrollHeight={150}>
+    <FormWrapper scrollHeight={325}>
 
       <View style={styles.container}>
 

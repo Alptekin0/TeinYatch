@@ -3,8 +3,8 @@ import React from 'react'
 
 const BasvurularımSection = () => {
   return (
-    <View>
-      <Text>BasvurularımSection</Text>
+    <View style={{ flex: 1, alignItems: "center", justifyContent: "center", }}>
+      <Text style={{ textAlign: "center", fontSize: 22 }}>Basvurularım Sayfası Geliştermeleri daha sonra yapılacaktır.</Text>
     </View>
   )
 }

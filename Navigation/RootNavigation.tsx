@@ -5,11 +5,17 @@ import * as SplashScreen from 'expo-splash-screen';
 import { useSelector } from 'react-redux';
 import AuthNavigation from './AuthNavigation';
 import PagesNavigation from './PagesNavigation';
+import Main from '../Screens/PagesScreenAcente/Main';
+import { createStackNavigator } from '@react-navigation/stack';
+
+const Stack = createStackNavigator();
+
 
 SplashScreen.preventAutoHideAsync();
 
 const RootNavigation = () => {
   const isAuth = useSelector((state: any) => state.Auth.isAuth);
+  const isAuthAcente = useSelector((state: any) => state.Auth.isAuthAcente);
 
   const [fontsLoaded] = useFonts({
     'Nunito': require('../assets/Fonts/Nunito.ttf'),
@@ -22,7 +28,22 @@ const RootNavigation = () => {
 
   return (
     <NavigationContainer>
-      {isAuth ? <PagesNavigation /> : <AuthNavigation />}
+      <Stack.Navigator screenOptions={{ headerShown: false }}>
+        {!isAuth && !isAuthAcente && (
+          <Stack.Screen name="Auth" component={AuthNavigation} />
+        )}
+
+        {/* Müşteri */}
+        {isAuth && !isAuthAcente && (
+          <Stack.Screen name="Pages" component={PagesNavigation} />
+        )}
+
+        {/* Acente */}
+        {!isAuth && isAuthAcente && (
+          <Stack.Screen name="AcentePages" component={Main} />
+        )}
+      </Stack.Navigator>
+
     </NavigationContainer>
   );
 };

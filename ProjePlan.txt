@@ -1,3 +1,10 @@
+MÜŞTERİ SAYFALARINDAKİ KISMINDA EKSİKLER :
+
+  - Profilim Sayfasında iş ilanları başlığı altındaki Kişisel Bilgilerim ve Başvurularım kısmı eksik.
+  - Profilim Sayfasında Mesajlarım Başlığı altında Mesaj gönderme işlemi eksik.
+  - Veriler Veri tabanı ile çekilip tüm input validation kontrolleri yapılmalı.
+
+
 Aşamalar : 
 
   - Temel Navigasyon yapısı yapıldı.
@@ -18,9 +25,9 @@ Yapılacaklar :
   - Müşteri ve Acente Kayıt iki ayrı form olarak yapılacak.(formik ve yup) ✅️
   - Font Klasik font yapıldı tüm ekranlarda fontlar düzeltilecek.
   - Kayıt Ol sayfasında Kişisel Verilerin işlemesi kısmında bir modal oluşturup yazı çıkıcak.
-  - Şifre yenileme Ekranı yapılacak.
-  - Giriş Yap ve Kaydol ekranlarının sadece fonksiyonel bazı özellikleri eksik.
-  - Ekstra Hizmetler kişi sayısı ile çarpılmıyor.
+  - Şifre yenileme Ekranı yapılacak. ✅️
+  - Giriş Yap ve Kaydol ekranlarının sadece fonksiyonel bazı özellikleri eksik. ✅️
+  - Ekstra Hizmetler kişi sayısı ile çarpılmıyor. ✅️
 
 
 Eklenen Fontlar:
