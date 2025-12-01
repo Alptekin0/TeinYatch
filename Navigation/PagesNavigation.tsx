@@ -1,10 +1,8 @@
-import { StyleSheet, Text, View } from 'react-native'
-import React, { useEffect } from 'react'
-import { useFonts } from 'expo-font';
+import { StyleSheet } from 'react-native'
+import React from 'react'
 import * as SplashScreen from 'expo-splash-screen';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { AnaSayfa, Rezervasyonlarım, Favorilerim, ProfileNavigator } from '../Screens/PagesScreen';
-
 import { Ionicons } from '@expo/vector-icons';
 import { getFocusedRouteNameFromRoute } from '@react-navigation/native';
 
@@ -44,7 +42,7 @@ const PagesNavigation = () => {
           >
                <Tab.Screen name="AnaSayfa" component={AnaSayfa}
                     options={({ route }) => ({
-                         tabBarStyle: ((route) => {  // Tab barı sadece profil sayfasında göster sonrasında gizle
+                         tabBarStyle: ((route) => {  // Tab barı sadece AnaSayfa kısmında göster sonrasında gizle (Anasayfa menulerinde gizlenecek)
                               const routeName = getFocusedRouteNameFromRoute(route) ?? 'MainPage';
                               if (routeName === 'MainPage') {
                                    return { display: 'flex' };

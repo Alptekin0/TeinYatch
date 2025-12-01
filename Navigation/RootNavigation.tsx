@@ -5,7 +5,7 @@ import * as SplashScreen from 'expo-splash-screen';
 import { useSelector } from 'react-redux';
 import AuthNavigation from './AuthNavigation';
 import PagesNavigation from './PagesNavigation';
-import Main from '../Screens/PagesScreenAcente/Main';
+import PagesNavigationAcente from './PagesNavigationAcente';
 import { createStackNavigator } from '@react-navigation/stack';
 
 const Stack = createStackNavigator();
@@ -40,7 +40,7 @@ const RootNavigation = () => {
 
         {/* Acente */}
         {!isAuth && isAuthAcente && (
-          <Stack.Screen name="AcentePages" component={Main} />
+          <Stack.Screen name="PagesNavigationAcente" component={PagesNavigationAcente} />
         )}
       </Stack.Navigator>
 
