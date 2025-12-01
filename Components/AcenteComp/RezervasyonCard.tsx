@@ -1,7 +1,8 @@
-import { Image, ImageProps, StyleSheet, Text, View } from 'react-native'
+import { Image, ImageProps, StyleSheet, Text, View, TouchableOpacity } from 'react-native'
 import React from 'react'
 
 interface RezervasyonCardProps {
+     navigation: any,
      image: ImageProps,
      title: string,
      kisiSayisi: string | number,
@@ -9,9 +10,17 @@ interface RezervasyonCardProps {
      toplam: string,
 }
 
-const RezervasyonCard = ({ image, title, kisiSayisi, kalkisLimani, toplam }: RezervasyonCardProps) => {
+const RezervasyonCard = ({ navigation, image, title, kisiSayisi, kalkisLimani, toplam }: RezervasyonCardProps) => {
+
      return (
-          <View style={styles.container}>
+          <TouchableOpacity style={styles.container}
+               onPress={() => navigation.navigate('RezervasyonDetay', {
+                    image,
+                    title,
+                    kisiSayisi,
+                    kalkisLimani,
+                    toplam,
+               })}>
                <View>
                     <Image style={styles.image} source={image} />
                </View>
@@ -22,7 +31,7 @@ const RezervasyonCard = ({ image, title, kisiSayisi, kalkisLimani, toplam }: Rez
                     <Text style={styles.text}> <Text style={{ color: "#1366B2" }}>Kalkış:</Text>{kalkisLimani}</Text>
                     <Text style={styles.text}> <Text style={{ color: "#1366B2" }}>Toplam:</Text>{toplam} ₺</Text>
                </View>
-          </View>
+          </TouchableOpacity>
      )
 }
 
@@ -55,5 +64,5 @@ const styles = StyleSheet.create({
      text: {
           fontSize: 16,
 
-     }
+     },
 })

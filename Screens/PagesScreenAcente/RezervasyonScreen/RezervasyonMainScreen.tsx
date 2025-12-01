@@ -7,7 +7,7 @@ import RezervIptal from './RezervIptal';
 import { useSelector } from 'react-redux';
 
 
-const RezervasyonMain = () => {
+const RezervasyonMain = ({ navigation }: any) => {
 
      const [tab, setTab] = useState("bekleyen");
 
@@ -21,10 +21,12 @@ const RezervasyonMain = () => {
 
                <View style={styles.headerWrapper}>
 
-                    <TouchableOpacity style={[styles.button, tab === 'bekleyen' && styles.activeTab]} onPress={() => setTab('bekleyen')}>
+                    <TouchableOpacity style={[styles.button, tab === 'bekleyen' && styles.activeTab]} onPress={() => setTab('bekleyen')} >
                          <Ionicons name="ellipsis-horizontal-circle-outline" size={24} color="#F1AF3D" />
                          <Text style={[styles.text, tab === 'bekleyen' && styles.activeText]}>Bekleyen</Text>
                     </TouchableOpacity>
+
+
 
                     <TouchableOpacity style={[styles.button, tab === 'tamamlanan' && styles.activeTab]} onPress={() => setTab('tamamlanan')}>
                          <Ionicons name="ellipsis-horizontal-circle-outline" size={24} color="#24AA18" />
@@ -40,15 +42,15 @@ const RezervasyonMain = () => {
                <View style={{ marginBottom: 10 }}></View>
                <View style={{ flex: 1 }}>
                     <View style={{ display: tab === 'bekleyen' ? 'flex' : 'none', flex: 1 }}>
-                         <RezervBekleyen />
+                         <RezervBekleyen navigation={navigation} />
                     </View>
 
                     <View style={{ display: tab === 'tamamlanan' ? 'flex' : 'none', flex: 1 }}>
-                         <RezervTamamlanan />
+                         <RezervTamamlanan navigation={navigation} />
                     </View>
 
                     <View style={{ display: tab === 'iptal' ? 'flex' : 'none', flex: 1 }}>
-                         <RezervIptal />
+                         <RezervIptal navigation={navigation} />
                     </View>
                </View>
 

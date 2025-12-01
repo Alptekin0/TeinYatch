@@ -4,28 +4,36 @@ import { useSelector } from 'react-redux';
 import RezervasyonCard from '../../../Components/AcenteComp/RezervasyonCard';
 
 
-const RezervBekleyen = () => {
+const RezervBekleyen = ({ navigation, onPress }: any) => {
      const rezervYatlar = useSelector((state: any) => state.RezervYat.RezervYat);
-
-     console.log(rezervYatlar);
 
      const renderItem = ({ item }: { item: any }) => (
           <RezervasyonCard title={item.title}
                kisiSayisi={item.people}
                image={item.images[0]}
                kalkisLimani={item.location}
-               toplam={item.price} />
+               toplam={item.price}
+               navigation={navigation}
+          />
      );
 
      return (
           <View style={styles.container}>
-               <FlatList
-                    data={rezervYatlar}
-                    keyExtractor={(item) => item.id.toString()}
-                    renderItem={renderItem}
-                    contentContainerStyle={{ paddingVertical: 20 }}
-                    showsVerticalScrollIndicator = {false}
-               />
+               {rezervYatlar.length === 0
+                    ?
+                    <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
+                         <Text style={{ fontSize: 19 }}>Rezervasyon Bekleyen Yatınız Yoktur.</Text>
+                    </View>
+                    :
+                    <FlatList
+                         data={rezervYatlar}
+                         keyExtractor={(item) => item.id.toString()}
+                         renderItem={renderItem}
+                         contentContainerStyle={{ paddingVertical: 20 }}
+                         showsVerticalScrollIndicator={false}
+                    />
+               }
+
           </View>
      )
 }
@@ -37,7 +45,7 @@ const styles = StyleSheet.create({
           backgroundColor: '#fff',
           paddingHorizontal: 15,
           flex: 1,
-          marginTop : -8,
+          marginTop: -8,
      },
      card: {
           backgroundColor: '#fff',

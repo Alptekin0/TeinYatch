@@ -1,11 +1,17 @@
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React, { useState } from 'react'
 import Ionicons from '@expo/vector-icons/Ionicons';
+import { useDispatch, useSelector } from 'react-redux';
+import { setKisiSayisiPlus, setKisiSayisiMinus } from '../../../../Slices/RezervSlice/KisiSayisiSlice';
+
 
 
 const Kisisayisi = () => {
 
-     const [KisiSayisi, setKisiSayisi] = useState(1);
+
+     const dispatch = useDispatch();
+
+     const kisiSayisi = useSelector((state: any) => state.KisiSayisi.Kisisayisi);
 
      return (
           <View style={styles.container}>
@@ -15,17 +21,17 @@ const Kisisayisi = () => {
                </View>
                <View style={styles.sayacContainer}>
 
-                    <TouchableOpacity style={styles.iconArea} onPress={() => setKisiSayisi(prev => (prev > 1 ? prev - 1 : 1))}>
+                    <TouchableOpacity style={styles.iconArea} onPress={() => dispatch(setKisiSayisiMinus())}>
                          <Text style={styles.icon}> - </Text>
                     </TouchableOpacity>
 
-                    <Text style={styles.kisiSayisi}> {KisiSayisi} </Text>
+                    <Text style={styles.kisiSayisi}> {kisiSayisi} </Text>
 
 
-                    <TouchableOpacity style={styles.iconArea} onPress={() => setKisiSayisi(KisiSayisi + 1)}>
+                    <TouchableOpacity style={styles.iconArea} onPress={() => dispatch(setKisiSayisiPlus())}>
                          <Text style={styles.icon} > + </Text>
                     </TouchableOpacity>
-                    
+
                </View>
           </View>
      )

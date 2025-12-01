@@ -4,6 +4,7 @@ import { createStackNavigator } from '@react-navigation/stack'
 import TasitlarimMain from './TasitlarimScreen/TasitlarimMain';
 import DenizTasitiEkle from './TasitlarimScreen/DenizTasitiEkle';
 
+
 const Stack = createStackNavigator();
 
 const Tasitlarim = () => {

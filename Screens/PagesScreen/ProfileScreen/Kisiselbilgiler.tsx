@@ -21,7 +21,7 @@ const Kisiselbilgiler = () => {
 
   return (
 
-    <FormWrapper scrollHeight={80}>
+    <FormWrapper scrollHeight={280}>
 
       <View>
         <Header text='Kişisel Bilgilerim' />
