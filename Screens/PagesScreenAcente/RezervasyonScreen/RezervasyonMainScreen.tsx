@@ -1,5 +1,5 @@
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Ionicons from '@expo/vector-icons/Ionicons';
 import RezervBekleyen from './RezervBekleyen';
 import RezervTamamlanan from './RezervTamamlanan';
@@ -7,9 +7,18 @@ import RezervIptal from './RezervIptal';
 import { useSelector } from 'react-redux';
 
 
-const RezervasyonMain = ({ navigation }: any) => {
+const RezervasyonMain = ({ navigation, route }: any) => {
 
-     const [tab, setTab] = useState("bekleyen");
+     const [tab, setTab] = useState(route?.params?.initialTab || "bekleyen");
+
+     const [tamamlananList, setTamamlananList] = useState<any[]>([]);
+
+     useEffect(() => {
+          if (route.params?.yeniTamamlanan) {
+               setTamamlananList(prev => [...prev, route.params.yeniTamamlanan]);
+          }
+     }, [route.params?.yeniTamamlanan]);
+
 
      const rezervYat = useSelector((state: any) => state.RezervYat.RezervYat);
 
@@ -46,7 +55,8 @@ const RezervasyonMain = ({ navigation }: any) => {
                     </View>
 
                     <View style={{ display: tab === 'tamamlanan' ? 'flex' : 'none', flex: 1 }}>
-                         <RezervTamamlanan navigation={navigation} />
+                         <RezervTamamlanan />
+
                     </View>
 
                     <View style={{ display: tab === 'iptal' ? 'flex' : 'none', flex: 1 }}>

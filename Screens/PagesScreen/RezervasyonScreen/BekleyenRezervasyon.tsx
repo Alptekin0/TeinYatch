@@ -49,7 +49,7 @@ const BekleyenRezervasyon = () => {
                          RezervYat.length === 0
                               ?
                               <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-                                   <Text style={{ fontSize: 18 }}>Rezervasyon Bekleyen Yatınız bulunmamaktadır.</Text>
+                                   <Text style={{ fontSize: 22, fontWeight: 600 }}>Rezervasyon Bekleyen Yatınız bulunmamaktadır.</Text>
                               </View>
                               : <FlatList
                                    data={RezervYat}

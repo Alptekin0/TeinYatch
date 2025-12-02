@@ -12,17 +12,17 @@ import { setIsAuth, setIsAuthAcente } from '../../../Slices/IsAuthSlice';
 
 
 const DATA = [
-     { id: 1, text: 'Şirketim', icon: <MaterialCommunityIcons name="office-building" size={29} color="black" />, route: "Kisiselbilgiler" },
-     { id: 2, text: 'Satılık Deniz Taşıtları', icon: <Entypo name="price-tag" size={27} color="black" />, route: "Mesajlarim" },
-     { id: 3, text: 'İnsan Kaynakları', icon: <MaterialCommunityIcons name="file-account-outline" size={27} color="black" />, route: "Bildirimlerim" },
-     { id: 4, text: 'Mesajlarım', icon: <AntDesign name="message" size={27} color="black" />, route: "İsİlanlari" },
-     { id: 5, text: 'Bildirimlerim', icon: <Feather name="bell" size={27} color="black" />, route: "Guvenlik" },
-     { id: 6, text: 'Güvenlik', icon: <Ionicons name="lock-closed-outline" size={27} color="black" />, route: "SSS" },
+     { id: 1, text: 'Şirketim', icon: <MaterialCommunityIcons name="office-building" size={29} color="black" />, route: "Sirketim" },
+     { id: 2, text: 'Satılık Deniz Taşıtları', icon: <Entypo name="price-tag" size={27} color="black" />, route: "SatilikDenizTasitlari" },
+     { id: 3, text: 'İnsan Kaynakları', icon: <MaterialCommunityIcons name="file-account-outline" size={27} color="black" />, route: "InsanKaynaklari" },
+     { id: 4, text: 'Mesajlarım', icon: <AntDesign name="message" size={27} color="black" />, route: "Mesajlarim" },
+     { id: 5, text: 'Bildirimlerim', icon: <Feather name="bell" size={27} color="black" />, route: "Bildirimlerim" },
+     { id: 6, text: 'Güvenlik', icon: <Ionicons name="lock-closed-outline" size={27} color="black" />, route: "Guvenlik" },
      { id: 7, text: 'Destek', icon: <Feather name="phone" size={27} color="black" />, route: "Destek" },
      { id: 8, text: 'Çıkış Yap', icon: <MaterialIcons name="logout" size={27} color="black" />, route: "CikisYap" },
 ]
 
-const ProfilimMain = () => {
+const ProfilimMain = ({ navigation }: any) => {
 
      const [logoutModalVisible, setLogoutModalVisible] = useState(false);
      const IsAuth = useSelector((state: any) => state.Auth.isAuth);

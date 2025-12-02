@@ -24,16 +24,19 @@ const RezervYat = createSlice({
   reducers: {
     addRezervYat: (state, action: PayloadAction<Yat | Yat[]>) => {
       if (Array.isArray(action.payload)) {
-        state.RezervYat.push(...action.payload); // array ise hepsini ekle
+        state.RezervYat.push(...action.payload);
       } else {
-        state.RezervYat.push(action.payload); 
+        state.RezervYat.push(action.payload);
       }
+    },
+    removeRezervYat: (state, action: PayloadAction<number>) => {
+      state.RezervYat = state.RezervYat.filter(yat => yat.id !== action.payload);
     },
     clearRezervYat: (state) => {
       state.RezervYat = [];
-    }
+    },
   },
 });
 
 export default RezervYat.reducer;
-export const { addRezervYat, clearRezervYat } = RezervYat.actions;
+export const { addRezervYat, clearRezervYat, removeRezervYat  } = RezervYat.actions;

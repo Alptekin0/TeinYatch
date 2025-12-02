@@ -8,9 +8,10 @@ interface RezervasyonCardProps {
      kisiSayisi: string | number,
      kalkisLimani: string,
      toplam: string,
+     id : string | number
 }
 
-const RezervasyonCard = ({ navigation, image, title, kisiSayisi, kalkisLimani, toplam }: RezervasyonCardProps) => {
+const RezervasyonCard = ({ navigation, image, title, kisiSayisi, kalkisLimani, toplam, id }: RezervasyonCardProps) => {
 
      return (
           <TouchableOpacity style={styles.container}
@@ -20,6 +21,7 @@ const RezervasyonCard = ({ navigation, image, title, kisiSayisi, kalkisLimani, t
                     kisiSayisi,
                     kalkisLimani,
                     toplam,
+                    id, 
                })}>
                <View>
                     <Image style={styles.image} source={image} />

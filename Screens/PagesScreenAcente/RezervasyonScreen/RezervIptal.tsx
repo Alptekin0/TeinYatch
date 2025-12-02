@@ -3,8 +3,8 @@ import React from 'react'
 
 const RezervIptal = ({ navigation }: any) => {
      return (
-          <View style={{ height: 500, alignItems: "center", justifyContent: "center" }}>
-               <Text style={{ fontSize: 20, }}>Rezerv iptal</Text>
+          <View style={{ flex : 1, alignItems: "center", justifyContent: "center" }}>
+               <Text style={{ fontSize: 22, fontWeight : 600}}>İptal edilen rezervasyon bulunmuyor</Text>
           </View>
      )
 }

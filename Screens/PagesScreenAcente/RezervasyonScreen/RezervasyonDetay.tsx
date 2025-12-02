@@ -4,18 +4,20 @@ import Header from '../../../Components/AppComp/AppPagesHeader';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import Entypo from '@expo/vector-icons/Entypo';
 import AppButton from '../../../Components/AppComp/AppButton';
-import { useSelector } from 'react-redux';
 import ModalComponent from '../../../Components/AppComp/ModalComponent';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
+import { useDispatch } from 'react-redux';
+import { removeRezervYat } from '../../../Slices/RezervSlice/RezervYat';
+import { addTamamlanan } from '../../../Slices/AcenteTamamlananSlice';
 
-
-const RezervasyonDetay = ({ route }: any) => {
+const RezervasyonDetay = ({ route, navigation }: any) => {
 
   const { image, title, kisiSayisi, kalkisLimani, toplam } = route.params;
 
+
   const [onayVisible, setOnayVisible] = useState(false);
   const [redVisible, setredVisible] = useState(false);
-
+  const dispatch = useDispatch();
 
   return (
     <View style={styles.container}>
@@ -49,7 +51,9 @@ const RezervasyonDetay = ({ route }: any) => {
             fontSize={18}
             title='İptal Et'
             fontWeight={600}
-            onPress={() => setredVisible(true)} />
+            onPress={() => {
+              setOnayVisible(true);
+            }} />
 
           <AppButton width={120}
             height={35}
@@ -64,8 +68,29 @@ const RezervasyonDetay = ({ route }: any) => {
 
 
       </View>
-      <ModalComponent ButtonTitle='Tamam' onClose={() => setOnayVisible(false)} text='Rezervasyon onayı başarıyla gerçekleşmiştir.' title='Onaylandı' visible={onayVisible} ButtonColor='#1366B2' />
-      <ModalComponent ButtonTitle='Tamam' onClose={() => setredVisible(false)} text='Rezervasyon iptali başarıyla gerçekleşmiştir.' title='İptal Edildi' visible={redVisible} ButtonColor='#DD0808' icon={<MaterialIcons name="cancel" size={24} color="#DD0808" />} />
+      <ModalComponent ButtonTitle='Tamam'
+        onClose={() => {
+          setOnayVisible(false);
+          dispatch(removeRezervYat(route.params.id));
+          dispatch(addTamamlanan({
+            image, title, kisiSayisi, kalkisLimani, toplam
+          }));
+          navigation.navigate('RezervasyonMainScreen', { initialTab: 'tamamlanan' });
+        }}
+        text='Rezervasyon onayı başarıyla gerçekleşmiştir.'
+        title='Onaylandı'
+        visible={onayVisible}
+        ButtonColor='#1366B2' />
+
+
+
+      <ModalComponent ButtonTitle='Tamam'
+        onClose={() => setredVisible(false)}
+        text='Rezervasyon iptali başarıyla gerçekleşmiştir.'
+        title='İptal Edildi'
+        visible={redVisible}
+        ButtonColor='#DD0808'
+        icon={<MaterialIcons name="cancel" size={24} color="#DD0808" />} />
     </View>
   )
 }

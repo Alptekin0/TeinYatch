@@ -15,6 +15,7 @@ import GecmisRezervReducer from "../Slices/RezervSlice/GecmisRezervSlice"
 import RezervYatOnaylananReducer from "../Slices/RezervSlice/RezervYatOnaylananSlice"
 import IsFavoriteSaleReducer from "../Slices/IsFavoriteSaleSlice"
 import KisiSayisiReducer from "../Slices/RezervSlice/KisiSayisiSlice"
+import AcenteTamamlananReducer from "../Slices/AcenteTamamlananSlice"
 
 
 
@@ -36,6 +37,7 @@ export const store = configureStore({
           RezervYatOnaylanan: RezervYatOnaylananReducer,
           IsFavoriteSale: IsFavoriteSaleReducer,
           KisiSayisi: KisiSayisiReducer,
+          Tamamlanan : AcenteTamamlananReducer
 
      }
 })
