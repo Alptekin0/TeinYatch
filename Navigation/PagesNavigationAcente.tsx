@@ -42,7 +42,17 @@ const PagesNavigationAcente = () => {
                })}
 
           >
-               <Tab.Screen name='Tasitlarim' component={Tasitlarim} />
+               <Tab.Screen name='Tasitlarim' component={Tasitlarim}
+                    options={({ route }) => ({
+                         tabBarStyle: ((route) => {  // Tab barı sadece profil sayfasında göster sonrasında gizle
+                              const routeName = getFocusedRouteNameFromRoute(route) ?? 'TasitlarimMain';
+                              if (routeName === 'TasitlarimMain') {
+                                   return { display: 'flex' };
+                              }
+                              return { display: 'none' };
+                         })(route),
+                    })}
+               />
                <Tab.Screen name='Rezervasyonlar' component={Rezervasyonlar} />
                <Tab.Screen name='Odemeler' component={Odemeler} />
                <Tab.Screen name='Profilim' component={Profilim}

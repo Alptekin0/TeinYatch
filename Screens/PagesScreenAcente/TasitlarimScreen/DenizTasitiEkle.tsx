@@ -6,7 +6,7 @@ import TasitEkleInputs from '../../../Components/AcenteComp/TasitEkleInputs'
 import FormWrapper from '../../../Components/AppComp/FormWrapper'
 import AppButton from '../../../Components/AppComp/AppButton'
 
-const DenizTasitiEkle = () => {
+const DenizTasitiEkle = ({ navigation }: any) => {
      return (
           <View>
                <FormWrapper scrollHeight={320}>
@@ -15,7 +15,7 @@ const DenizTasitiEkle = () => {
                     <View style={{ alignItems: "center" }}>
                          <TasitEkleInputs />
                     </View>
-                    <View style={{ alignItems: "center", marginTop: 30, marginBottom: 30 }}>
+                    <View style={{ alignItems: "center", marginTop: 30, marginBottom: 50 }}>
                          <AppButton width={240}
                               height={44}
                               backgroundColor='#1366B2'
@@ -23,7 +23,7 @@ const DenizTasitiEkle = () => {
                               color='white'
                               fontSize={18}
                               title='Kaydet ve Devam et'
-                              onPress={() => ""}
+                              onPress={() => navigation.navigate('Lokasyon')}
                               fontWeight={500} />
                     </View>
                </FormWrapper>

@@ -4,12 +4,13 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 
 interface InfoText {
      text: string,
+     heigth?: number,
 }
 
 
-const Info = ({ text }: InfoText) => {
+const Info = ({ text, heigth= 36 }: InfoText) => {
      return (
-          <View style = {styles.infoWrapper}>
+          <View style = {[styles.infoWrapper, {height : heigth}]}>
                <Ionicons style = {styles.infoIcon} name="information-circle-outline" size={24} color="black" />
                <Text style ={styles.infoText}>{text}</Text>
           </View>
