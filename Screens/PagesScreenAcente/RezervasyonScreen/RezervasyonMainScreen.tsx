@@ -60,7 +60,7 @@ const RezervasyonMain = ({ navigation, route }: any) => {
                     </View>
 
                     <View style={{ display: tab === 'iptal' ? 'flex' : 'none', flex: 1 }}>
-                         <RezervIptal navigation={navigation} />
+                         <RezervIptal />
                     </View>
                </View>
 

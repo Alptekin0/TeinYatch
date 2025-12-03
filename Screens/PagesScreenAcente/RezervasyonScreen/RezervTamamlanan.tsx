@@ -51,7 +51,7 @@ export default RezervTamamlanan
 const styles = StyleSheet.create({
 
      container: {
-          width: 346,
+          width: 356,
           height: 157,
           marginTop: 20,
           marginBottom: 10,

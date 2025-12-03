@@ -7,14 +7,24 @@ import Input from '../../../Components/AppComp/Input'
 import Ionicons from '@expo/vector-icons/Ionicons';
 import AppButton from '../../../Components/AppComp/AppButton'
 import FormWrapper from '../../../Components/AppComp/FormWrapper'
+import { useDispatch, useSelector } from 'react-redux'
+import { AddSehir, AddBulunduguLiman, AddFarkliLiman } from '../../../Slices/YatEkleBilgileriSlice'
+
 
 const Lokasyon = ({ navigation }: any) => {
 
-  const [sehir, setSehir] = useState('');
-  const [bulunduguLiman, setBulunduguLiman] = useState('');
-  const [digerLimanlar, setDigerLimanlar] = useState('');
+
+  const dispatch = useDispatch();
+
+  const sehir = useSelector((state: any) => state.YatEkleBilgileri.Sehir);
+  const bulunduguLiman = useSelector((state: any) => state.YatEkleBilgileri.bulunduguLiman);
+  const digerLimanlar = useSelector((state: any) => state.YatEkleBilgileri.farkliLiman);
 
   const [check, setCheck] = useState(false);
+
+  console.log(sehir);
+  console.log(bulunduguLiman);
+  console.log(digerLimanlar);
 
 
   return (
@@ -33,7 +43,7 @@ const Lokasyon = ({ navigation }: any) => {
             height={72}
             width={365}
             value={sehir}
-            onChangeText={(text) => setSehir(text)}
+            onChangeText={(text) => dispatch(AddSehir(text))}
             keyboardType='default'
           />
           <Input Title='Bulunduğu Liman'
@@ -41,7 +51,7 @@ const Lokasyon = ({ navigation }: any) => {
             height={72}
             width={365}
             value={bulunduguLiman}
-            onChangeText={(text) => setBulunduguLiman(text)}
+            onChangeText={(text) => dispatch(AddBulunduguLiman(text))}
             keyboardType='default'
           />
 
@@ -62,7 +72,7 @@ const Lokasyon = ({ navigation }: any) => {
                 height={72}
                 width={365}
                 value={digerLimanlar}
-                onChangeText={(text) => setDigerLimanlar(text)}
+                onChangeText={(text) => dispatch(AddFarkliLiman(text))}
                 keyboardType='default'
               />
             </View>

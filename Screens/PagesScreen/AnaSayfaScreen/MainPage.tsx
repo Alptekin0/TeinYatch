@@ -24,7 +24,7 @@ const MainPage = ({ navigation }: any) => {
                <Image source={require("../../../assets/icons/TEİN YACHT.png")} style={styles.teinYatchTitle} />
                <CustomTabBar />
 
-               <LocationSelector />
+               <LocationSelector onPress={() => navigation.navigate('LocationSelectorMain')}/>
                <View style={{ marginTop: 5 }}></View>
 
                {activeTab === 'kiralik' ?

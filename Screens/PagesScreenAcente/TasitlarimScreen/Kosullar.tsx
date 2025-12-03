@@ -4,12 +4,16 @@ import Header from '../../../Components/AppComp/AppPagesHeader'
 import AcenteStepper from '../../../Components/AcenteComp/AcenteStepper'
 import Input from '../../../Components/AppComp/Input'
 import AppButton from '../../../Components/AppComp/AppButton'
+import { useDispatch, useSelector } from 'react-redux'
+import { AddiptalSuresi, AddKiralamaSuresi, AddOzelGun } from '../../../Slices/YatEkleBilgileriSlice'
 
 const Kosullar = ({ navigation }: any) => {
 
-  const [iptalSuresi, setIptalSuresi] = useState('');
-  const [kiralmaSuresi, setKiralamaSuresi] = useState('');
-  const [OzelGun, setOzelGun] = useState('');
+  const dispatch = useDispatch();
+
+  const iptalSuresi = useSelector((state: any) => state.YatEkleBilgileri.iptalSuresi);
+  const kiralmaSuresi = useSelector((state: any) => state.YatEkleBilgileri.kiralmaSuresi);
+  const OzelGun = useSelector((state: any) => state.YatEkleBilgileri.OzelGun);
 
   return (
     <View>
@@ -19,11 +23,12 @@ const Kosullar = ({ navigation }: any) => {
       <View style={styles.inputWrapper}>
         <Input width={365}
           height={72}
-          Title='Ücretsiz İptal Süresi'
+          Title='Ücretsiz İptal Süresi (Gün)'
           placeholder='Ücretsiz İptal Süresi Belirleyiniz.'
           keyboardType='number-pad'
           value={iptalSuresi}
-          onChangeText={(text) => setIptalSuresi(text)} />
+          onChangeText={(text) => dispatch(AddiptalSuresi(text))} 
+          maxLength={2}/>
 
         <View style={{ marginTop: 20 }}></View>
 
@@ -33,7 +38,8 @@ const Kosullar = ({ navigation }: any) => {
           placeholder='Minimum Kiralama Süresi Belirleyiniz.'
           keyboardType='number-pad'
           value={kiralmaSuresi}
-          onChangeText={(text) => setKiralamaSuresi(text)} />
+          onChangeText={(text) => dispatch(AddKiralamaSuresi(text))} 
+          maxLength={2}/>
 
         <View style={{ marginTop: 20 }}></View>
 
@@ -43,7 +49,8 @@ const Kosullar = ({ navigation }: any) => {
           placeholder='Minimum kiralama süresi belirleyiniz'
           keyboardType='number-pad'
           value={OzelGun}
-          onChangeText={(text) => setOzelGun(text)} />
+          onChangeText={(text) => dispatch(AddOzelGun(text))}
+          maxLength={2} />
       </View>
 
       <View style={{ alignItems: "center", marginTop: 280 }}>

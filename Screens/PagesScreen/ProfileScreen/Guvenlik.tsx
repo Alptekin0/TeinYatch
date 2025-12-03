@@ -8,9 +8,6 @@ import HesabiSil from '../../../Components/ProfileComp/GüvenlikComp/HesabiSil'
 import Feather from '@expo/vector-icons/Feather';
 import FormWrapper from '../../../Components/AppComp/FormWrapper'
 
-
-
-
 const Guvenlik = () => {
   const [mevcutSifre, setMevcutSifre] = useState("");
   const [yeniSifre, setYeniSifre] = useState("");
@@ -42,6 +39,7 @@ const Guvenlik = () => {
               onIconPress={() => { setMevcutSifreEye(!mevcutSifreEye) }}
 
             />
+
             <Input Title='Yeni Şifreniz'
               placeholder='Yeni Şifreniz'
               width={330}
@@ -56,12 +54,13 @@ const Guvenlik = () => {
 
 
             />
+
             <Info text='Güvenliğiniz için adınız, soyadınız, doğum tarihinizi içermeyen bir şifre belirlemenizi öneririz .' />
 
 
           </View>
 
-          <View style={{ alignSelf: "center" }}>
+          <View style={{ alignSelf: "center", marginLeft: -20 }}>
             <AppButton title='Kaydet'
               fontSize={20}
               height={44}

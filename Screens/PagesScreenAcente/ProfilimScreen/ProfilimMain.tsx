@@ -42,6 +42,8 @@ const ProfilimMain = ({ navigation }: any) => {
                <Image style={styles.image} source={require('../../../assets/icons/tein-logo.jpg')} />
                <Text style={styles.userName}>Tein Yatch</Text>
 
+               <View style={styles.divider}></View>
+
                <FlatList
                     data={DATA}
                     keyExtractor={(item) => item.id.toString()}
@@ -144,5 +146,12 @@ const styles = StyleSheet.create({
      buttonText: {
           color: "white",
           fontWeight: "600"
+     },
+     divider: {
+          width: "85%",
+          height: 1,
+          backgroundColor: "#909FAC",
+          alignSelf: "center",
+          marginBottom: -3,
      }
 })

@@ -6,9 +6,13 @@ import ImkanlarComp from '../../../Components/AcenteComp/ImkanlarComp'
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import AppButton from '../../../Components/AppComp/AppButton'
+import { useDispatch, useSelector } from "react-redux";
+import { AddGuvenlik, AddImkanlar, AddKullanimKosullari } from '../../../Slices/YatEkleBilgileriSlice'
 
 
 const İmkanlar = ({ navigation }: any) => {
+
+  const dispatch = useDispatch();
 
   const imkanlar = [
     { id: "1", label: "İç Mekan Hoparlör" },
@@ -32,9 +36,31 @@ const İmkanlar = ({ navigation }: any) => {
     <ScrollView>
       <Header text='Deniz Taşıtı Ekle' />
       <AcenteStepper currentStep={4} />
-      <ImkanlarComp icon={<MaterialIcons name="category" size={24} color="#1366B2" />} title='İmkanlar' items={imkanlar} />
-      <ImkanlarComp icon={<FontAwesome name="life-buoy" size={24} color="#1366B2" />} title='Güvenlik Ekipmanları' items={GuvenlikEkipmanlari} />
-      <ImkanlarComp icon={<MaterialIcons name="gavel" size={24} color="#1366B2" />} title='Kullanım Koşulları' items={KullanimKosullari} />
+      <ImkanlarComp
+        icon={<MaterialIcons name="category" size={24} color="#1366B2" />}
+        title='İmkanlar'
+        items={imkanlar}
+        onSelect={(selectedIds) => {
+          const fullItems = imkanlar.filter(item => selectedIds.includes(item.id));
+          dispatch(AddImkanlar(fullItems));
+        }} />
+
+
+      <ImkanlarComp icon={<FontAwesome name="life-buoy" size={24} color="#1366B2" />}
+        title='Güvenlik Ekipmanları'
+        items={GuvenlikEkipmanlari}
+        onSelect={(selectedIds) => {
+          const fullItems = GuvenlikEkipmanlari.filter(item => selectedIds.includes(item.id));
+          dispatch(AddGuvenlik(fullItems));
+        }} />
+
+      <ImkanlarComp icon={<MaterialIcons name="gavel" size={24} color="#1366B2" />}
+        title='Kullanım Koşulları'
+        items={KullanimKosullari}
+        onSelect={(selectedIds) => {
+          const fullItems = KullanimKosullari.filter(item => selectedIds.includes(item.id));
+          dispatch(AddKullanimKosullari(fullItems));
+        }} />
 
       <View style={{ alignItems: "center", marginTop: 40, marginBottom: 50 }}>
         <AppButton width={240}

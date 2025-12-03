@@ -55,7 +55,7 @@ const PagesNavigation = () => {
                <Tab.Screen name="Favorilerim" component={Favorilerim} />
                <Tab.Screen name="Profilim" component={ProfileNavigator}
                     options={({ route }) => ({
-                         tabBarStyle: ((route) => {  // Tab barı sadece profil sayfasında göster sonrasında gizle
+                         tabBarStyle: ((route) => {  // Tab barı sadece profil sayfasında göster sonrasında gizle (profil menulerinde gizlenecek)
                               const routeName = getFocusedRouteNameFromRoute(route) ?? 'Profil';
                               if (routeName === 'Profil') {
                                    return { display: 'flex' };

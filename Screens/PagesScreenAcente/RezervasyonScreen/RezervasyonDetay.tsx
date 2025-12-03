@@ -9,6 +9,7 @@ import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import { useDispatch } from 'react-redux';
 import { removeRezervYat } from '../../../Slices/RezervSlice/RezervYat';
 import { addTamamlanan } from '../../../Slices/AcenteTamamlananSlice';
+import { addIptalEdilen } from '../../../Slices/RezervSlice/RezervIptal';
 
 const RezervasyonDetay = ({ route, navigation }: any) => {
 
@@ -52,7 +53,7 @@ const RezervasyonDetay = ({ route, navigation }: any) => {
             title='İptal Et'
             fontWeight={600}
             onPress={() => {
-              setOnayVisible(true);
+              setredVisible(true);
             }} />
 
           <AppButton width={120}
@@ -84,13 +85,34 @@ const RezervasyonDetay = ({ route, navigation }: any) => {
 
 
 
-      <ModalComponent ButtonTitle='Tamam'
-        onClose={() => setredVisible(false)}
+      <ModalComponent
+        ButtonTitle='Tamam'
+        onClose={() => {
+          setredVisible(false);
+
+          // 1) Bekleyen listesinden sil
+          dispatch(removeRezervYat(route.params.id));
+
+          // 2) İptal edilenlere ekle
+          dispatch(addIptalEdilen({
+            id: route.params.id,
+            image,
+            title,
+            kisiSayisi,
+            kalkisLimani,
+            toplam
+          }));
+
+          // 3) İptal tabına yönlendir
+          navigation.navigate('RezervasyonMainScreen', { initialTab: 'iptal' });
+        }}
         text='Rezervasyon iptali başarıyla gerçekleşmiştir.'
         title='İptal Edildi'
         visible={redVisible}
         ButtonColor='#DD0808'
-        icon={<MaterialIcons name="cancel" size={24} color="#DD0808" />} />
+        icon={<MaterialIcons name="cancel" size={24} color="#DD0808" />}
+      />
+
     </View>
   )
 }

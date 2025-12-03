@@ -1,4 +1,4 @@
-import { StyleSheet, Text, TouchableOpacity } from 'react-native'
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React from 'react'
 import { useNavigation } from '@react-navigation/native'
 
@@ -32,8 +32,8 @@ const styles = StyleSheet.create({
           width: 335,
           height: 62,
           alignSelf: "center",
-          borderTopWidth: 1,
-          borderTopColor: "#909FAC",
+          borderBottomWidth: 1,
+          borderBottomColor: "#909FAC",
           alignItems: "center",
           justifyContent: "space-between",
           flexDirection: "row",

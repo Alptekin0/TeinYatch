@@ -44,7 +44,6 @@ const styles = StyleSheet.create({
           width: 356,
           height: 157,
           borderRadius: 20,
-          backgroundColor: "#F2F9FF",
           borderWidth: 1,
           borderColor: "#CCE7FF",
           padding: 10,
@@ -52,6 +51,7 @@ const styles = StyleSheet.create({
           alignItems: "center",
           gap: 20,
           marginTop: 20,
+          alignSelf : "center",
      },
      image: {
           width: 120,

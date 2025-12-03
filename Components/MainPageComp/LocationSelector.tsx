@@ -3,9 +3,13 @@ import React from 'react'
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import Feather from '@expo/vector-icons/Feather';
 
-const LocationSelector = () => {
+interface LocationSelectorProps  {
+     onPress : () => void
+}
+
+const LocationSelector = ( {onPress} : LocationSelectorProps  ) => {
      return (
-          <TouchableOpacity style={styles.container}>
+          <TouchableOpacity style={styles.container} onPress={onPress}>
 
                <MaterialCommunityIcons name="map-marker-radius-outline" size={26} color="#1366B2" />
 

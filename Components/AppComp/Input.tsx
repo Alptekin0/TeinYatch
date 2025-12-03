@@ -14,10 +14,12 @@ interface InputProps {
      secureTextEntry?: boolean,
      onIconPress?: () => void,
      onBlur?: (e: any) => void,
-     autoCapitalize?: 'none' | 'sentences' | 'words' | 'characters'
+     autoCapitalize?: 'none' | 'sentences' | 'words' | 'characters',
+     maxLength ?: number
 }
 
-const Input = ({ width, height, Title, placeholder, icon, errors, value, onChangeText, keyboardType, secureTextEntry, onBlur, onIconPress, autoCapitalize }: InputProps) => {
+const Input = (
+     { width, height, Title, placeholder, icon, errors, value, onChangeText, keyboardType, secureTextEntry, onBlur, onIconPress, autoCapitalize, maxLength }: InputProps) => {
      return (
           <View style={[styles.container, { width, height }]}>
                <Text style={styles.title}>{Title}</Text>
@@ -32,6 +34,7 @@ const Input = ({ width, height, Title, placeholder, icon, errors, value, onChang
                          value={value}
                          secureTextEntry={secureTextEntry}
                          autoCapitalize= {autoCapitalize}
+                         maxLength={maxLength}
                     />
                     {icon && <TouchableOpacity style={styles.iconContainer} onPress={onIconPress}>{icon}</TouchableOpacity>}
                     {errors && <Text style={{ color: 'red', fontSize: 12, position: 'absolute', bottom: -15 }}>{errors}</Text>}

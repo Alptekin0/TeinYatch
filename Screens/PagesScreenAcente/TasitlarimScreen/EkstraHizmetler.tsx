@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, View } from 'react-native'
 import React from 'react'
 import Header from '../../../Components/AppComp/AppPagesHeader'
 import AcenteStepper from '../../../Components/AcenteComp/AcenteStepper'
@@ -6,8 +6,12 @@ import ImkanlarComp from '../../../Components/AcenteComp/ImkanlarComp'
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import Fontisto from '@expo/vector-icons/Fontisto';
 import AppButton from '../../../Components/AppComp/AppButton'
+import { AddHizmetler, AddOrganizasyonlar, AddYemekMenuleri } from '../../../Slices/YatEkleBilgileriSlice'
+import { useDispatch, useSelector } from 'react-redux'
 
 const EkstraHizmetler = ({ navigation }: any) => {
+
+     const dispatch = useDispatch();
 
      const Organizasyonlar = [
           { id: "1", label: "Evlenme Teklifi " },
@@ -28,18 +32,45 @@ const EkstraHizmetler = ({ navigation }: any) => {
           { id: "3", label: "Açık Büfe Kahvaltı Menü" },
      ];
 
+
+     // const organizasyonlar = useSelector ((state : any) => state.YatEkleBilgileri.organizasyonlar);
+     // const hizmetler = useSelector ((state : any) => state.YatEkleBilgileri.hizmetler);
+     // const yemekMenuleri = useSelector ((state : any) => state.YatEkleBilgileri.yemekMenuleri);
+
+
+     // console.log(organizasyonlar);
+     // console.log(hizmetler);
+     // console.log(yemekMenuleri);   KULLANILACAK YERDE BU ŞEKİLDE KULLAN
+
+
      return (
           <View>
                <Header text='Deniz Taşıtı Ekle' />
                <AcenteStepper currentStep={5} />
+
                <ImkanlarComp icon={<MaterialCommunityIcons name="party-popper" size={24} color="#1366B2" />}
-                    title='Organizasyonlar' items={Organizasyonlar} />
+                    title='Organizasyonlar'
+                    items={Organizasyonlar}
+                    onSelect={(selectedIds) => {
+                         const fullItems = Organizasyonlar.filter(item => selectedIds.includes(item.id));
+                         dispatch(AddOrganizasyonlar(fullItems));
+                    }} />
+
                <View style={{ marginTop: 10 }}></View>
                <ImkanlarComp icon={<Fontisto name="cocktail" size={24} color="#1366B2" />}
-                    title='Hizmetler' items={Hizmetler} />
+                    title='Hizmetler' items={Hizmetler}
+                    onSelect={(selectedIds) => {
+                         const fullItems = Hizmetler.filter(item => selectedIds.includes(item.id));
+                         dispatch(AddHizmetler(fullItems));
+                    }} />
+
                <View style={{ marginTop: 10 }}></View>
                <ImkanlarComp icon={<MaterialCommunityIcons name="food-fork-drink" size={24} color="#1366B2" />}
-                    title='Yemek Menüleri' items={YemekMenuleri} />
+                    title='Yemek Menüleri' items={YemekMenuleri}
+                    onSelect={(selectedIds) => {
+                         const fullItems = YemekMenuleri.filter(item => selectedIds.includes(item.id));
+                         dispatch(AddYemekMenuleri(fullItems));
+                    }} />
 
                <View style={{ marginTop: 10 }}></View>
 

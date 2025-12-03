@@ -5,11 +5,19 @@ import AcenteStepper from '../../../Components/AcenteComp/AcenteStepper'
 import Input from '../../../Components/AppComp/Input'
 import Info from '../../../Components/AppComp/Info'
 import AppButton from '../../../Components/AppComp/AppButton'
-
+import { useDispatch, useSelector } from 'react-redux'
+import { AddAciklama } from '../../../Slices/YatEkleBilgileriSlice'
 
 
 const Aciklamalar = ({ navigation }: any) => {
-  const [aciklama, setAciklama] = useState('');
+
+  const dispatch = useDispatch();
+
+  const aciklama = useSelector ((state : any) => state.YatEkleBilgileri.aciklama);
+
+  console.log(aciklama);
+  
+
   return (
     <View>
       <Header text='Deniz Taşıtı Ekle' />
@@ -19,7 +27,13 @@ const Aciklamalar = ({ navigation }: any) => {
       </View>
       <View style={styles.inputWrapper}>
         <Text style={{ fontSize: 16, color: "#1366B2", marginBottom: 2, }}>Açıklama</Text>
-        <TextInput style={styles.input} placeholder='Açıklamanızı buraya yazabilirsiniz.' multiline textAlignVertical="top" maxLength={1500} />
+        <TextInput style={styles.input} 
+        placeholder='Açıklamanızı buraya yazabilirsiniz.' 
+        multiline 
+        textAlignVertical="top" 
+        maxLength={1500} 
+        value={aciklama}
+        onChangeText={(text) => dispatch(AddAciklama(text))}/>
       </View>
       <View style={{ alignItems: "center", marginTop: 30, marginBottom: 50 }}>
         <AppButton width={240}

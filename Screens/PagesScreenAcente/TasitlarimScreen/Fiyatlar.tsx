@@ -8,15 +8,23 @@ import Info from '../../../Components/AppComp/Info';
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import AppButton from '../../../Components/AppComp/AppButton';
+import { useDispatch, useSelector } from 'react-redux';
+import { AddGecelikUcret, AddSaatlikUcret } from '../../../Slices/YatEkleBilgileriSlice';
 
 
 
 const Fiyatlar = ({ navigation }: any) => {
 
-     const [saatlikUcret, setSaatlikUcret] = useState('');
-     const [gecelikUcret, setGecelikUcret] = useState('');
+
      const [check, setCheck] = useState(false);
      const [fiyatCheck, setFiyatCheck] = useState(false);
+
+     const saatlikUcret = useSelector((state: any) => state.YatEkleBilgileri.saatlikUcret);
+     const gecelikUcret = useSelector((state: any) => state.YatEkleBilgileri.gecelikUcret);
+
+     const dispatch = useDispatch();
+
+     console.log(saatlikUcret, gecelikUcret);
 
      return (
           <View>
@@ -35,7 +43,7 @@ const Fiyatlar = ({ navigation }: any) => {
                          placeholder=''
                          keyboardType='number-pad'
                          value={saatlikUcret}
-                         onChangeText={(text) => setSaatlikUcret(text)} />
+                         onChangeText={(text) => dispatch(AddSaatlikUcret(text))} />
                </View>
                <View style={styles.infoWrapper}>
                     <Info text='Belirlediğiniz ücret her 1 saat için uygulanacaktır.' />
@@ -53,7 +61,7 @@ const Fiyatlar = ({ navigation }: any) => {
                          placeholder=''
                          keyboardType='number-pad'
                          value={gecelikUcret}
-                         onChangeText={(text) => setGecelikUcret(text)} />
+                         onChangeText={(text) => dispatch(AddGecelikUcret(text))} />
                </View>
 
                <View style={styles.infoWrapper}>

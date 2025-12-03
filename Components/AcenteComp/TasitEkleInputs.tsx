@@ -1,20 +1,27 @@
-import { StyleSheet, Text, View } from 'react-native'
-import React, { useState } from 'react'
+import { StyleSheet, View } from 'react-native'
+import React, { useEffect, useState } from 'react'
 import Input from '../AppComp/Input'
+import { useDispatch, useSelector } from 'react-redux';
+import { AddYapimMalzemesi, AddBayrak, AddMarka, Addmodel, AddsonBakim, AddtamKapasite, AddtasitIsmi, AddtasitTipi, AddtasitUzunlugu, AddtasitYili, Addtuvalet } from '../../Slices/YatEkleBilgileriSlice'
+
+
 
 const TasitEkleInputs = () => {
 
-     const [tasitTipi, setTasitTipi] = useState('');
-     const [Marka, setMarka] = useState('');
-     const [model, setModel] = useState('');
-     const [tasitIsmi, setTasitIsmi] = useState('');
-     const [tasitYili, setTasitYili] = useState('');
-     const [sonBakim, setSonBakim] = useState('');
-     const [tuvalet, setTuvalet] = useState('');
-     const [tamKapasite, setTamKapasite] = useState('');
-     const [tasitUzunluğu, setTasitUzunlug] = useState('');
-     const [bayrak, setBayrak] = useState('');
-     const [yapimMalzemesi, setYapimMalzemesi] = useState('');
+     const dispatch = useDispatch();
+
+     const tasitTipi = useSelector((state: any) => state.YatEkleBilgileri.tasitTipi);
+     const Marka = useSelector((state: any) => state.YatEkleBilgileri.Marka);
+     const model = useSelector((state: any) => state.YatEkleBilgileri.model);
+     const tasitIsmi = useSelector((state: any) => state.YatEkleBilgileri.tasitIsmi);
+     const tasitYili = useSelector((state: any) => state.YatEkleBilgileri.tasitYili);
+     const sonBakim = useSelector((state: any) => state.YatEkleBilgileri.sonBakim);
+     const tuvalet = useSelector((state: any) => state.YatEkleBilgileri.tuvalet);
+     const tamKapasite = useSelector((state: any) => state.YatEkleBilgileri.tamKapasite);
+     const tasitUzunlugu = useSelector((state: any) => state.YatEkleBilgileri.tasitUzunlugu);
+     const bayrak = useSelector((state: any) => state.YatEkleBilgileri.bayrak);
+     const yapimMalzemesi = useSelector((state: any) => state.YatEkleBilgileri.yapimMalzemesi);
+
 
      return (
           <View>
@@ -24,7 +31,7 @@ const TasitEkleInputs = () => {
                     placeholder='Taşıt Tipi Seçiniz'
                     keyboardType='default'
                     value={tasitTipi}
-                    onChangeText={(text) => setTasitTipi(text)}
+                    onChangeText={(text) => dispatch(AddtasitTipi(text))}
                     autoCapitalize='sentences'
                />
                <Input width={365}
@@ -33,7 +40,7 @@ const TasitEkleInputs = () => {
                     placeholder='Marka Giriniz'
                     keyboardType='default'
                     value={Marka}
-                    onChangeText={(text) => setMarka(text)}
+                    onChangeText={(text) => dispatch(AddMarka(text))}
                     autoCapitalize='sentences'
                />
                <Input width={365}
@@ -42,7 +49,7 @@ const TasitEkleInputs = () => {
                     placeholder='Modeli Seçiniz'
                     keyboardType='default'
                     value={model}
-                    onChangeText={(text) => setModel(text)}
+                    onChangeText={(text) => dispatch(Addmodel(text))}
                     autoCapitalize='sentences'
                />
                <Input width={365}
@@ -51,7 +58,7 @@ const TasitEkleInputs = () => {
                     placeholder='Taşıt İsmi Giriniz'
                     keyboardType='default'
                     value={tasitIsmi}
-                    onChangeText={(text) => setTasitIsmi(text)}
+                    onChangeText={(text) => dispatch(AddtasitIsmi(text))}
                     autoCapitalize='sentences'
                />
                <Input width={365}
@@ -60,7 +67,7 @@ const TasitEkleInputs = () => {
                     placeholder='Taşıt Yılı'
                     keyboardType='default'
                     value={tasitYili}
-                    onChangeText={(text) => setTasitYili(text)}
+                    onChangeText={(text) => dispatch(AddtasitYili(text))}
                     autoCapitalize='sentences'
                />
                <Input width={365}
@@ -69,7 +76,7 @@ const TasitEkleInputs = () => {
                     placeholder='Son Bakım Onarim Yılı'
                     keyboardType='default'
                     value={sonBakim}
-                    onChangeText={(text) => setSonBakim(text)}
+                    onChangeText={(text) => dispatch(AddsonBakim(text))}
                     autoCapitalize='sentences'
                />
                <Input width={365}
@@ -78,7 +85,7 @@ const TasitEkleInputs = () => {
                     placeholder='Tuvalet Sayısı'
                     keyboardType='default'
                     value={tuvalet}
-                    onChangeText={(text) => setTuvalet(text)}
+                    onChangeText={(text) => dispatch(Addtuvalet(text))}
                     autoCapitalize='sentences'
                />
                <Input width={365}
@@ -87,16 +94,16 @@ const TasitEkleInputs = () => {
                     placeholder='Tam Kapasite'
                     keyboardType='default'
                     value={tamKapasite}
-                    onChangeText={(text) => setTamKapasite(text)}
+                    onChangeText={(text) => dispatch(AddtamKapasite(text))}
                     autoCapitalize='sentences'
                />
                <Input width={365}
                     height={72}
-                    Title='Tam Kapasite'
-                    placeholder='Tam Kapasite'
+                    Title='Taşıt Uzunluğu'
+                    placeholder='Taşıt Uzunluğu'
                     keyboardType='default'
-                    value={tasitUzunluğu}
-                    onChangeText={(text) => setTasitUzunlug(text)}
+                    value={tasitUzunlugu}
+                    onChangeText={(text) => dispatch(AddtasitUzunlugu(text))}
                     autoCapitalize='sentences'
                />
                <Input width={365}
@@ -105,7 +112,7 @@ const TasitEkleInputs = () => {
                     placeholder='Bayrak seçiniz'
                     keyboardType='default'
                     value={bayrak}
-                    onChangeText={(text) => setBayrak(text)}
+                    onChangeText={(text) => dispatch(AddBayrak(text))}
                     autoCapitalize='sentences'
                />
                <Input width={365}
@@ -114,7 +121,7 @@ const TasitEkleInputs = () => {
                     placeholder='Yapım Malzemesi Seçiniz'
                     keyboardType='default'
                     value={yapimMalzemesi}
-                    onChangeText={(text) => setYapimMalzemesi(text)}
+                    onChangeText={(text) => dispatch(AddYapimMalzemesi(text))}
                     autoCapitalize='sentences'
                />
 

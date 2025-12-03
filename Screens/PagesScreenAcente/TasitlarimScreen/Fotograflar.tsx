@@ -6,7 +6,13 @@ import Feather from '@expo/vector-icons/Feather';
 import Header from '../../../Components/AppComp/AppPagesHeader';
 import AcenteStepper from '../../../Components/AcenteComp/AcenteStepper';
 import AppButton from '../../../Components/AppComp/AppButton';
+import { useDispatch } from 'react-redux';
+import { AddFotograflar } from '../../../Slices/YatEkleBilgileriSlice';
 
+
+// const fotograflar = useSelector((state: any) => state.YatEkleBilgileri.fotograflar);
+
+// <Image style = {{width : 100, heigth : 100}} source={{ uri: fotograflar[0].uri }} />    FOTOGRAFLARI SLİCE'DAN ÇEKİP KULLANMAK İÇİN BU KODU KULLAN
 
 
 interface SelectedImage {
@@ -15,6 +21,9 @@ interface SelectedImage {
 }
 
 const Fotograflar = ({ navigation }: any) => {
+
+  const dispatch = useDispatch();
+
   const [images, setImages] = useState<SelectedImage[]>([]);
 
   const pickImages = async () => {
@@ -96,7 +105,11 @@ const Fotograflar = ({ navigation }: any) => {
           fontSize={18}
           title='Kaydet ve Devam et'
           fontWeight={600}
-          onPress={() => navigation.navigate('IslemSonucu')}
+          onPress={() => {
+            dispatch(AddFotograflar(images));
+            navigation.navigate('IslemSonucu');
+          }}
+
           backgroundColor='#1366B2' />
       </View>
     </ScrollView>

@@ -1,17 +1,49 @@
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
-import React from 'react'
+import React, { useState } from 'react'
 
 const Tamamlanan = () => {
+     const [detay, setDetay] = useState(false);
      return (
-          <TouchableOpacity style={styles.container}>
-               <View>
-                    <Text style={styles.sirket}>Tein Yat</Text>
-                    <Text style={styles.tarih}>21.09.2023 • 10.00</Text>
-               </View>
-               <View>
-                    <Text style={styles.fiyat}>3500 ₺</Text>
-               </View>
-          </TouchableOpacity>
+
+          <View>
+               {
+                    detay ?
+                         <TouchableOpacity style={styles.detayContainer} onPress={() => setDetay(!detay)}>
+                              <View style={styles.headerWrapper}>
+                                   <View>
+                                        <Text style={styles.sirket}>Tein Yat</Text>
+                                        <Text style={styles.tarih}>21.09.2023 • 10.00</Text>
+                                   </View>
+                                   <View>
+                                        <Text style={styles.fiyat}>3500 ₺</Text>
+                                   </View>
+                              </View>
+
+                              <View>
+                                   <Text style={styles.RezText}>
+                                        #121416 numaralı rezervasyonunuza ait ödemeniz tamamlanmış ve hesabınıza aktarılmıştır.
+                                   </Text>
+                              </View>
+                              <View style={styles.divider}></View>
+                              <View>
+                                   <Text style={{ fontSize: 15 }}>Garanti Bankası</Text>
+                                   <Text style={{ fontSize: 15 }}>Tein Teknoloji A.Ş.</Text>
+                                   <Text style={{ fontSize: 15 }}>TR XXXXXXXXXXXXXXX</Text>
+                              </View>
+                         </TouchableOpacity>
+
+                         :
+                         <TouchableOpacity style={styles.container} onPress={() => setDetay(!detay)}>
+                              <View>
+                                   <Text style={styles.sirket}>Tein Yat</Text>
+                                   <Text style={styles.tarih}>21.09.2023 • 10.00</Text>
+                              </View>
+                              <View>
+                                   <Text style={styles.fiyat}>3500 ₺</Text>
+                              </View>
+                         </TouchableOpacity>
+               }
+          </View>
      )
 }
 
@@ -32,6 +64,29 @@ const styles = StyleSheet.create({
           justifyContent: "space-between",
           paddingHorizontal: 20,
      },
+     detayContainer: {
+          width: 356,
+          height: 197,
+          backgroundColor: "#F2F9FF",
+          borderWidth: 1,
+          borderColor: "#CCE7FF",
+          alignSelf: "center",
+          borderRadius: 20,
+          flexDirection: "column",
+          padding: 10,
+          marginTop: 20,
+     },
+     headerWrapper: {
+          flexDirection: "row",
+          justifyContent: "space-between",
+          alignItems: "center",
+     },
+     divider: {
+          width: "100%",
+          height: 1,
+          backgroundColor: "#909FAC",
+          marginVertical: 10,
+     },
      sirket: {
           fontSize: 21,
           color: "#1366B2",
@@ -46,5 +101,9 @@ const styles = StyleSheet.create({
           color: "#24AA18",
           fontSize: 20,
           fontWeight: 500,
+     },
+     RezText: {
+          marginVertical: 10,
+          fontSize: 15,
      }
 })

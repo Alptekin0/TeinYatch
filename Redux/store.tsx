@@ -16,6 +16,9 @@ import RezervYatOnaylananReducer from "../Slices/RezervSlice/RezervYatOnaylananS
 import IsFavoriteSaleReducer from "../Slices/IsFavoriteSaleSlice"
 import KisiSayisiReducer from "../Slices/RezervSlice/KisiSayisiSlice"
 import AcenteTamamlananReducer from "../Slices/AcenteTamamlananSlice"
+import YatEkleBilgileriReducer from "../Slices/YatEkleBilgileriSlice"
+import AcenteEklenenYatReducer from "../Slices/AcenteEklenenYat"
+import RezervIptalReducer from "../Slices/RezervSlice/RezervIptal"
 
 
 
@@ -37,8 +40,10 @@ export const store = configureStore({
           RezervYatOnaylanan: RezervYatOnaylananReducer,
           IsFavoriteSale: IsFavoriteSaleReducer,
           KisiSayisi: KisiSayisiReducer,
-          Tamamlanan : AcenteTamamlananReducer
-
+          Tamamlanan: AcenteTamamlananReducer,
+          YatEkleBilgileri: YatEkleBilgileriReducer,
+          AcenteEklenenYat: AcenteEklenenYatReducer,
+          RezervIptal: RezervIptalReducer,
      }
 })
 

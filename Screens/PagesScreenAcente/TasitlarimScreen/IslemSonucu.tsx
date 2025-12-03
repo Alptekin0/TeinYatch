@@ -1,8 +1,21 @@
 import { Image, StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import React, { useEffect } from 'react'
 import AppButton from '../../../Components/AppComp/AppButton'
+import { useDispatch, useSelector } from 'react-redux'
+import { AddYat } from '../../../Slices/AcenteEklenenYat'
 
 const IslemSonucu = ({ navigation }: any) => {
+
+     const dispatch = useDispatch();
+     const yatBilgileri = useSelector((state: any) => state.YatEkleBilgileri);
+
+     // Sayfa açıldığında yatı ekle
+     useEffect(() => {
+          dispatch(AddYat(yatBilgileri));
+          console.log(yatBilgileri);
+     }, []);
+
+
      return (
           <View>
                <Image style={styles.image} source={require('../../../assets/icons/Yatch.jpg')} />

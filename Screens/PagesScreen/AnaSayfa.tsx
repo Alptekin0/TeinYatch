@@ -6,7 +6,7 @@ import RezervEkstraHizmet from './AnaSayfaScreen/RezervEkstraHizmet';
 import RezervOdeme from './AnaSayfaScreen/RezervOdeme';
 import RezervOnay from './AnaSayfaScreen/RezervOnay';
 import YatDetayForSale from './AnaSayfaScreen/YatDetayForSaleNavigation';
-
+import LocationSelectorMain from '../../Components/MainPageComp/LocationSelectorMain';
 
 const Stack = createStackNavigator();
 
@@ -17,6 +17,7 @@ const AnaSayfa = () => {
 
     <Stack.Navigator screenOptions={{ headerShown: false, cardStyle: { backgroundColor: 'white' } }}>
       <Stack.Screen name='MainPage' component={MainPage} />
+      <Stack.Screen name='LocationSelectorMain' component={LocationSelectorMain} />
       <Stack.Screen name='YatDetay' component={YatDetay} />
       <Stack.Screen name='YatDetayForSale' component={YatDetayForSale} />
       <Stack.Screen name='RezervEt' component={RezervEt} />
