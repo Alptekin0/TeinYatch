@@ -46,9 +46,9 @@ const AcenteKayıt = () => {
             width={330}
             height={72}
             keyboardType='default'
-            onChangeText={handleChange("isim")}
+            onChangeText={handleChange("sirketIsmi")}
             placeholder='Şirket İsmi'
-            onBlur={handleBlur("isim")}
+            onBlur={handleBlur("sirketIsmi")}
             value={values.sirketIsmi}
             errors={touched.sirketIsmi && errors.sirketIsmi ? errors.sirketIsmi : undefined} />
           <Input
@@ -56,9 +56,9 @@ const AcenteKayıt = () => {
             width={330}
             height={72}
             keyboardType='default'
-            onChangeText={handleChange("soyisim")}
+            onChangeText={handleChange("vergiNumarasi")}
             placeholder='Vergi Numarası'
-            onBlur={handleBlur("soyisim")}
+            onBlur={handleBlur("vergiNumarasi")}
             value={values.vergiNumarasi}
             errors={touched.vergiNumarasi && errors.vergiNumarasi ? errors.vergiNumarasi : undefined}
           />
@@ -93,9 +93,9 @@ const AcenteKayıt = () => {
             width={330}
             height={72}
             keyboardType='email-address'
-            onChangeText={handleChange("email")}
+            onChangeText={handleChange("sirketEmail")}
             placeholder='Şirket E-mail'
-            onBlur={handleBlur("email")}
+            onBlur={handleBlur("sirketEmail")}
             value={values.sirketEmail}
             errors={touched.sirketEmail && errors.sirketEmail ? errors.sirketEmail : undefined}
           />

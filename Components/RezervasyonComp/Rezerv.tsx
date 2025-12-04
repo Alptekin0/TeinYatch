@@ -1,6 +1,7 @@
 import { StyleSheet, Text, View, Image, ImageProps } from 'react-native'
 import React from 'react'
 import Captain from '../../Components/RezervasyonComp/Captain'
+import OnayBekleniyor from './OnayBekleniyor'
 
 interface RezervId {
      id: number,
@@ -21,7 +22,7 @@ const Rezerv = ({ id, location, image}: RezervId) => {
                     </View>
 
                     <View style={styles.CAPTAINTEXT}>
-                         <Captain />
+                         <OnayBekleniyor />
                     </View>
 
                </View>

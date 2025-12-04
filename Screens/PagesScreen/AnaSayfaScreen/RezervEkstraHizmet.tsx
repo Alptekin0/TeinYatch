@@ -47,10 +47,11 @@ const styles = StyleSheet.create({
     paddingBottom: 30,
     marginLeft: 15,
     marginRight: -10,
+
   },
   buttonContainer: {
     marginTop: 40,
     marginBottom: 20,
-    marginLeft: 10,
+    marginRight: 12
   }
 })

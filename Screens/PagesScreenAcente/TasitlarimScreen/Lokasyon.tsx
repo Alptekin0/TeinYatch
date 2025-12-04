@@ -53,6 +53,7 @@ const Lokasyon = ({ navigation }: any) => {
             value={bulunduguLiman}
             onChangeText={(text) => dispatch(AddBulunduguLiman(text))}
             keyboardType='default'
+            maxLength={20}
           />
 
         </View>

@@ -1,5 +1,6 @@
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
 import React, { useState } from 'react'
+import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 
 const Bekleyen = () => {
 

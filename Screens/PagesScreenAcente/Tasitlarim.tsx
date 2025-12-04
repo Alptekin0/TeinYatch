@@ -11,6 +11,7 @@ import EkstraHizmetler from './TasitlarimScreen/EkstraHizmetler';
 import Aciklamalar from './TasitlarimScreen/Aciklamalar';
 import Fotograflar from './TasitlarimScreen/Fotograflar';
 import IslemSonucu from './TasitlarimScreen/IslemSonucu';
+import TasitDetay from './TasitlarimScreen/TasitDetay';
 
 
 
@@ -29,6 +30,7 @@ const Tasitlarim = () => {
       <Stack.Screen name='Aciklamalar' component={Aciklamalar} />
       <Stack.Screen name='Fotograflar' component={Fotograflar} />
       <Stack.Screen name='IslemSonucu' component={IslemSonucu} />
+      <Stack.Screen name='TasitDetay' component={TasitDetay} />
     </Stack.Navigator>
   )
 }

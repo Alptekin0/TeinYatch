@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native'
+import { StyleSheet, Text, View, Image, TouchableOpacity, ScrollView } from 'react-native'
 import React from 'react'
 import AppButton from '../../../Components/AppComp/AppButton'
 import { useSelector } from 'react-redux'
@@ -11,7 +11,7 @@ const TasitlarimMain = ({ navigation }: any) => {
 
      return (
 
-          <View>
+          <ScrollView contentContainerStyle = {{paddingBottom : 40}} showsVerticalScrollIndicator = {false}>
                {yats.length === 0 ?
 
                     <View>
@@ -43,10 +43,10 @@ const TasitlarimMain = ({ navigation }: any) => {
                          </View>
 
 
-                         <AddYats />
+                         <AddYats onPress={() => navigation.navigate('TasitDetay')} />
                     </View>
                }
-          </View>
+          </ScrollView>
      )
 }
 

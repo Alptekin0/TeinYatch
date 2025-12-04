@@ -23,7 +23,7 @@ const RezervBekleyen = ({ navigation, onPress }: any) => {
                {rezervYatlar.length === 0
                     ?
                     <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-                         <Text style={{ fontSize: 22, fontWeight : 600 }}>Rezervasyon Bekleyen Yatınız Yoktur.</Text>
+                         <Text style={{ fontSize: 22, fontWeight: 600 }}>Rezervasyon Bekleyen Yatınız Yoktur.</Text>
                     </View>
                     :
                     <FlatList
@@ -45,7 +45,6 @@ const styles = StyleSheet.create({
      container: {
           backgroundColor: '#fff',
           paddingHorizontal: 15,
-          flex : 1,
           marginTop: -15,
      },
      card: {

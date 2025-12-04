@@ -9,7 +9,7 @@ import KiralamaSartlari from '../../../Components/MainPageComp/YatDetayComp/Kira
 import KullanimSartlari from '../../../Components/MainPageComp/YatDetayComp/KullanimSartlari';
 import YorumlamaVePuanlama from '../../../Components/MainPageComp/YatDetayComp/YorumlamaVePuanlama';
 import FiyatVeRezervEt from '../../../Components/MainPageComp/YatDetayComp/FiyatVeRezervEt';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { setYatId } from '../../../Slices/SelectedYat';
 
 

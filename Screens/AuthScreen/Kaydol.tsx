@@ -42,7 +42,7 @@ export default Kaydol
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1
+    flex: 1,
   },
   title: {
     width: 330,

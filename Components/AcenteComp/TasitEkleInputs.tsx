@@ -60,6 +60,7 @@ const TasitEkleInputs = () => {
                     value={tasitIsmi}
                     onChangeText={(text) => dispatch(AddtasitIsmi(text))}
                     autoCapitalize='sentences'
+                    maxLength={25}
                />
                <Input width={365}
                     height={72}

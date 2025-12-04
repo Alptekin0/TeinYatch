@@ -43,7 +43,8 @@ const Fiyatlar = ({ navigation }: any) => {
                          placeholder=''
                          keyboardType='number-pad'
                          value={saatlikUcret}
-                         onChangeText={(text) => dispatch(AddSaatlikUcret(text))} />
+                         onChangeText={(text) => dispatch(AddSaatlikUcret(text))}
+                         maxLength={6} />
                </View>
                <View style={styles.infoWrapper}>
                     <Info text='Belirlediğiniz ücret her 1 saat için uygulanacaktır.' />
