@@ -47,7 +47,10 @@ const DogrulamaMail = ({ navigation }: any) => {
 
           <AppButton width={330}
             height={40}
-            onPress={() => (navigation.navigate("sifremiUnuttum"))}
+            onPress={() => navigation.reset({
+              index: 0,
+              routes: [{ name: "sifremiUnuttum" }],
+            })}
             paddingHorizontal={32}
             paddingVertical={8}
             title='Önceki sayfaya dön'

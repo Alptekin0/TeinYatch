@@ -3,14 +3,23 @@ import React from 'react'
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import Entypo from '@expo/vector-icons/Entypo';
 import Feather from '@expo/vector-icons/Feather';
+import { useDispatch, useSelector } from 'react-redux';
+import { toggleFavorite } from '../../../Slices/IsFavoritedSlice';
 
 interface YatDetayTitleProps {
-     title : string | undefined,
-     location : string | undefined,
+     id: string | number | undefined,
+     title: string | undefined,
+     location: string | undefined,
 }
 
 
-const YatDetayTitle = ( {title, location} : YatDetayTitleProps) => {
+const YatDetayTitle = ({ id, title, location }: YatDetayTitleProps) => {
+
+     const dispatch = useDispatch();
+     const favorites = useSelector((state: any) => state.isFavorite.favoritesList);
+
+     const isFavorited = favorites.includes(id);
+
      return (
           <View style={styles.container}>
                <View>
@@ -22,7 +31,12 @@ const YatDetayTitle = ( {title, location} : YatDetayTitleProps) => {
                </View>
                <View style={styles.iconWrapper}>
                     <Feather name="share" size={24} color="#1366B2" />
-                    <Entypo name="heart" size={24} color="#DD0808" />
+                    <Entypo
+                         name={isFavorited ? "heart" : "heart-outlined"}
+                         size={24}
+                         color={isFavorited ? "#DD0808" : "#DD0808"}
+                         onPress={() => dispatch(toggleFavorite(id))}
+                    />
                </View>
           </View>
      )
@@ -43,11 +57,11 @@ const styles = StyleSheet.create({
           flexDirection: "row",
           alignItems: "center",
           gap: 5,
-          marginTop : 2,
+          marginTop: 2,
      },
      iconWrapper: {
-          flexDirection : "row",
-          gap : 10,
-          alignItems : "center",
+          flexDirection: "row",
+          gap: 10,
+          alignItems: "center",
      },
 })

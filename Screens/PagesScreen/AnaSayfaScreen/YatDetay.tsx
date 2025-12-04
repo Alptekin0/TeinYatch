@@ -43,7 +43,7 @@ const YatDetay = ({ navigation }: any) => {
                     <ScrollView style={{ flex: 1 }} contentContainerStyle={{ paddingBottom: 40 }} showsVerticalScrollIndicator={false}>
 
 
-                         <YatDetayTitle title={selectedYachts.title} location={selectedYachts.location} />
+                         <YatDetayTitle id={selectedYachts.id} title={selectedYachts.title} location={selectedYachts.location} />
 
                          <View style={styles.divider}></View>
 

@@ -32,7 +32,12 @@ const SifremiUnuttum = ({ navigation }: any) => {
       </View>
 
       <View style={styles.backButtonWrapper}>
-        <AppButton title='Önceki sayfaya dön' paddingHorizontal={32} paddingVertical={8} backgroundColor='#0568C3' borderRadius={8} color='white' width={330} height={40} fontSize={16} fontWeight={600} onPress={() => { navigation.navigate("girisYap") }} />
+        <AppButton title='Önceki sayfaya dön' paddingHorizontal={32} paddingVertical={8} backgroundColor='#0568C3' borderRadius={8} color='white' width={330} height={40} fontSize={16} fontWeight={600} onPress={() => {
+          navigation.reset({
+            index: 0,
+            routes: [{ name: "girisYap" }],
+          })
+        }} />
       </View>
 
     </View>

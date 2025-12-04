@@ -3,6 +3,7 @@ import React, { useEffect } from 'react'
 import AppButton from '../../../Components/AppComp/AppButton'
 import { useDispatch, useSelector } from 'react-redux'
 import { AddYat } from '../../../Slices/AcenteEklenenYat'
+import { BackHandler } from "react-native";
 
 const IslemSonucu = ({ navigation }: any) => {
 
@@ -12,7 +13,12 @@ const IslemSonucu = ({ navigation }: any) => {
      // Sayfa açıldığında yatı ekle
      useEffect(() => {
           dispatch(AddYat(yatBilgileri));
-          console.log(yatBilgileri);
+     }, []);
+
+     useEffect(() => {
+          const onBackPress = () => true;
+          const sub = BackHandler.addEventListener("hardwareBackPress", onBackPress);
+          return () => sub.remove();
      }, []);
 
 
@@ -30,7 +36,12 @@ const IslemSonucu = ({ navigation }: any) => {
                          color='white'
                          fontSize={19}
                          fontWeight={600}
-                         onPress={() => navigation.navigate('TasitlarimMain')}
+                         onPress={() => {
+                              navigation.reset({
+                                   index: 0,
+                                   routes: [{ name: "TasitlarimMain" }],
+                              });
+                         }}
                          title='Taşıtlarım' />
                </View>
           </View>

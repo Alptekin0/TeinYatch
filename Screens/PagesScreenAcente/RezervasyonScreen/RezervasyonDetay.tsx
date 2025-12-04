@@ -10,6 +10,8 @@ import { useDispatch } from 'react-redux';
 import { removeRezervYat } from '../../../Slices/RezervSlice/RezervYat';
 import { addTamamlanan } from '../../../Slices/AcenteTamamlananSlice';
 import { addIptalEdilen } from '../../../Slices/RezervSlice/RezervIptal';
+import { CommonActions } from "@react-navigation/native";
+
 
 const RezervasyonDetay = ({ route, navigation }: any) => {
 
@@ -76,7 +78,18 @@ const RezervasyonDetay = ({ route, navigation }: any) => {
           dispatch(addTamamlanan({
             image, title, kisiSayisi, kalkisLimani, toplam
           }));
-          navigation.navigate('RezervasyonMainScreen', { initialTab: 'tamamlanan' });
+          navigation.dispatch(
+            CommonActions.reset({
+              index: 0,
+              routes: [
+                {
+                  name: 'RezervasyonMainScreen',
+                  params: { initialTab: 'tamamlanan' }
+                }
+              ],
+            })
+          );
+
         }}
         text='Rezervasyon onayı başarıyla gerçekleşmiştir.'
         title='Onaylandı'
@@ -104,7 +117,18 @@ const RezervasyonDetay = ({ route, navigation }: any) => {
           }));
 
           // 3) İptal tabına yönlendir
-          navigation.navigate('RezervasyonMainScreen', { initialTab: 'iptal' });
+          navigation.dispatch(
+            CommonActions.reset({
+              index: 0,
+              routes: [
+                {
+                  name: 'RezervasyonMainScreen',
+                  params: { initialTab: 'iptal' }
+                }
+              ],
+            })
+          );
+
         }}
         text='Rezervasyon iptali başarıyla gerçekleşmiştir.'
         title='İptal Edildi'

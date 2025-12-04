@@ -1,6 +1,7 @@
 import { TouchableOpacity, Modal, StyleSheet, Text, View, StatusBar } from 'react-native'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Feather from '@expo/vector-icons/Feather';
+
 
 
 interface ModalProps {
@@ -15,7 +16,6 @@ interface ModalProps {
 
 const ModalComponent = ({ visible, onClose, title, text, ButtonTitle, ButtonColor = "#1366B2",
      icon = <Feather name="check-circle" size={24} color="#1366B2" /> }: ModalProps) => {
-
 
      return (
           <Modal visible={visible} animationType='slide' onRequestClose={onClose} transparent>

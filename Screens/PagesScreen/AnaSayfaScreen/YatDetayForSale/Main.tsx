@@ -1,6 +1,5 @@
 import { Image, StyleSheet, Text, View } from 'react-native'
 import React from 'react'
-import { Fontisto } from '@expo/vector-icons';
 import { SatilikYat } from '../../../../Fake-Data/SatilikYatlar/SatilikYat';
 import { ScrollView } from 'react-native-gesture-handler';
 import YatDetayTitle from '../../../../Components/MainPageComp/YatDetayComp/YatDetayTitle';
@@ -16,7 +15,8 @@ import AraMesajButton from '../../../../Components/MainPageComp/YatDetayComp/Sat
 export default function Main({ route, navigation }: any) {
 
      const { yatId } = route.params;
-     const selectedYat = SatilikYat.find((y) => y.id === yatId);
+     const selectedYat = SatilikYat.find((y) => y.id == yatId);
+
 
 
      return (
@@ -28,7 +28,7 @@ export default function Main({ route, navigation }: any) {
                     <ScrollView style={{ flex: 1 }} contentContainerStyle={{ paddingBottom: 40 }} showsVerticalScrollIndicator={false}>
 
 
-                         <YatDetayTitle title={selectedYat?.title} location={selectedYat?.bulunduguYer} />
+                         <YatDetayTitle title={selectedYat?.title} location={selectedYat?.bulunduguYer} id={selectedYat?.id} />
 
                          <View style={styles.divider}></View>
 

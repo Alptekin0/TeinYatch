@@ -61,14 +61,15 @@ const styles = StyleSheet.create({
      },
      imageContainer: {
           width: 342,
-          height: 243,
+          aspectRatio: 1.4,
+          borderRadius: 10,
+          overflow: "hidden",
      },
      image: {
-          width: 342,
-          height: 243,
-          borderRadius: 7,
-          resizeMode: "stretch",
+          width: "100%",
+          height: "100%",
      },
+
      textContainer: {
           width: 342,
           height: 100,

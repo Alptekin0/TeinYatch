@@ -1,5 +1,6 @@
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
 import React, { useState } from 'react'
+import { MaterialIcons } from '@expo/vector-icons';
 
 const Tamamlanan = () => {
      const [detay, setDetay] = useState(false);
@@ -14,8 +15,9 @@ const Tamamlanan = () => {
                                         <Text style={styles.sirket}>Tein Yat</Text>
                                         <Text style={styles.tarih}>21.09.2023 • 10.00</Text>
                                    </View>
-                                   <View>
+                                   <View style={[styles.priceWrapper, {marginRight : 7}]}>
                                         <Text style={styles.fiyat}>3500 ₺</Text>
+                                        <MaterialIcons name="arrow-drop-up" size={34} color="black" />
                                    </View>
                               </View>
 
@@ -38,8 +40,9 @@ const Tamamlanan = () => {
                                    <Text style={styles.sirket}>Tein Yat</Text>
                                    <Text style={styles.tarih}>21.09.2023 • 10.00</Text>
                               </View>
-                              <View>
+                              <View style={styles.priceWrapper}>
                                    <Text style={styles.fiyat}>3500 ₺</Text>
+                                   <MaterialIcons name="arrow-drop-down" size={34} color="black" />
                               </View>
                          </TouchableOpacity>
                }
@@ -105,5 +108,11 @@ const styles = StyleSheet.create({
      RezText: {
           marginVertical: 10,
           fontSize: 15,
-     }
+     },
+     priceWrapper: {
+          flexDirection: "row",
+          gap: 2,
+          alignItems: "center",
+     },
+
 })

@@ -16,8 +16,9 @@ const Bekleyen = () => {
                                         <Text style={styles.sirket}>Tein Yat</Text>
                                         <Text style={styles.tarih}>21.09.2023 • 10.00</Text>
                                    </View>
-                                   <View>
+                                   <View style = {[styles.priceWrapper, {marginRight : 7}]}>
                                         <Text style={styles.fiyat}>3500 ₺</Text>
+                                        <MaterialIcons name="arrow-drop-up" size={34} color="black" />
                                    </View>
                               </View>
 
@@ -40,8 +41,9 @@ const Bekleyen = () => {
                                    <Text style={styles.sirket}>Tein Yat</Text>
                                    <Text style={styles.tarih}>21.09.2023 • 10.00</Text>
                               </View>
-                              <View>
+                              <View style = {styles.priceWrapper}>
                                    <Text style={styles.fiyat}>3500 ₺</Text>
+                                   <MaterialIcons name="arrow-drop-down" size={34} color="black" />
                               </View>
                          </TouchableOpacity>
                }
@@ -108,4 +110,9 @@ const styles = StyleSheet.create({
           backgroundColor: "#909FAC",
           marginVertical: 10,
      },
+     priceWrapper : {
+          flexDirection : "row",
+          gap : 2,
+          alignItems : "center",
+     }
 })
